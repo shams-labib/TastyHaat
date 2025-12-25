@@ -52,8 +52,8 @@ Here are some beautiful hero section inspirations for food delivery landing page
 
 | Member               | Role                    | Section Responsible  |
 | -------------------- | ----------------------- | -------------------- |
-| Gantabya Kumar Bayda | Project Lead            | Navbar + Consistency |
-| [Team Member 2 Name] | Hero Section Designer   | Hero Section         |
+| Shams all Labib      | Project Lead            | Hero Section         |
+| Gantabya Kumar Bayda | Hero Section Designer   | Navbar + Consistency |
 | Maqsuda Mahboob      | About Section Designer  | About Section        |
 | Aminur Rahman        | Footer Section Designer | Footer Section       |
 
