@@ -12,8 +12,8 @@ const MenuCards = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="min-h-screen bg-base-100 dark:bg-gray-800 py-10 px-5">
+    <div id="menu" className="max-w-7xl mx-auto">
+      <div className="min-h-screen bg-base-100 dark:bg-gray-800 py-16 px-5">
         <h1 className="text-4xl dark:text-white font-bold text-center mb-12">Our <span className="text-primary">Menu</span></h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {menu.map((item) => (
