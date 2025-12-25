@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Chicken Burger",
+    "price": 350,
+    "description": "Grilled chicken patty with lettuce, tomato, and special sauce",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/mrnKGMp9/premium-photo-1695758787947-0aff87c1f93a.avif"
+  },
+  {
+    "id": 2,
+    "name": "Margherita Pizza",
+    "price": 500,
+    "description": "Classic pizza with fresh mozzarella, tomato sauce, and basil",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/WvZbHsDN/premium-photo-1679924471066-dd984e92f395.avif"
+  },
+  {
+    "id": 3,
+    "name": "Caesar Salad",
+    "price": 300,
+    "description": "Crisp romaine lettuce with Caesar dressing, croutons, and parmesan",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/Zzk7jJRk/premium-photo-1664392002995-4ee10b7f91e5.avif"
+  },
+  {
+    "id": 4,
+    "name": "Chocolate Fudge Cake",
+    "price": 250,
+    "description": "Rich and moist chocolate cake with fudge frosting",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/XfjJ3ZDd/premium-photo-1723867233123-76f9c3e357ee.avif"
+  }
+]
