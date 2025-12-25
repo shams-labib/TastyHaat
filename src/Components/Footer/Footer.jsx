@@ -7,7 +7,6 @@ const Footer = () => {
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-6 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left items-start">
-
           {/* Brand Section */}
           <div className="max-w-sm mx-auto md:mx-0">
             <h2 className="text-3xl font-bold text-secondary tracking-tight">
@@ -25,32 +24,30 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-3">
-             
-                <li>
-                  <Link
-                    to="/"
-                    className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/about"
-                    className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/contact"
-                    className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              
+              <li>
+                <Link
+                  to="/"
+                  className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/about"
+                  className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -95,13 +92,13 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10 bg-neutral/60 py-6 text-center text-xs opacity-70">
-        © 2025 <span className="font-semibold text-secondary">TastyHaat</span>. All rights reserved.
+        © 2025 <span className="font-semibold text-secondary">TastyHaat</span>.
+        All rights reserved.
       </div>
     </footer>
   );
