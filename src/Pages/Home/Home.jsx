@@ -1,10 +1,13 @@
 import React from "react";
+import TopSlider from "../Hero/Slider/TopSlider";
+import Hero from "../Hero/Hero";
+import WhyChooseUs from "../Hero/WhyChooseUs/WhyChooseUs";
 
 const Home = () => {
   return (
     <div>
-      <h1 className="bg-accent">Outlet Successfully Worked</h1>
-      <p>Development Branches Code</p>
+      <TopSlider></TopSlider>
+      <WhyChooseUs></WhyChooseUs>
     </div>
   );
 };
