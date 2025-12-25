@@ -1,16 +1,80 @@
-# React + Vite
+<div align="center">
+  <h1>🍽️ TastyHaat</h1>
+  <h3>Fresh & Delicious Food at Your Doorstep</h3>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive landing page for food delivery service  
+ Built with **React + Vite + Tailwind CSS + DaisyUI**
 
-Currently, two official plugins are available:
+[![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react&logoColor=white&style=for-the-badge)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?logo=tailwind-css&logoColor=white&style=for-the-badge)](https://tailwindcss.com/)
+[![DaisyUI](https://img.shields.io/badge/DaisyUI-4.x-5A0EF8?logo=daisyui&logoColor=white&style=for-the-badge)](https://daisyui.com/)
+[![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?logo=vite&logoColor=white&style=for-the-badge)](https://vitejs.dev/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  <!-- Hero Section Preview -->
 
-## React Compiler
+Here are some beautiful hero section inspirations for food delivery landing pages:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+</div>
 
-## Expanding the ESLint configuration
+### Hero Section Previews
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<grok-card data-id="035da7" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+
+<grok-card data-id="e8d166" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+
+### Navbar & Footer Inspirations
+
+**Responsive Sticky Navbar Examples:**
+
+<grok-card data-id="7f3cbf" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+
+**Clean & Modern Footer Designs:**
+
+<grok-card data-id="673d18" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+
+<grok-card data-id="f5ecea" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+
+## 🌟 Project Overview
+
+**TastyHaat** হলো একটি ফুড ডেলিভারি সার্ভিসের আকর্ষণীয় ল্যান্ডিং পেজ।  
+এটি সম্পূর্ণ মোবাইল-ফার্স্ট, রেসপন্সিভ এবং খুবই ক্লিন ডিজাইনের।
+
+### মূল ফিচারসমূহ
+
+- Sticky & Responsive Navbar
+- Eye-catching Hero Section
+- Informative About Section
+- Beautiful Footer with social links
+- Consistent theme (Primary: #e74c3c, Secondary: #f39c12)
+- DaisyUI components ব্যবহার করে দ্রুত UI তৈরি
+
+## 👥 Team Members & Responsibilities
+
+| Member               | Role                    | Section Responsible  |
+| -------------------- | ----------------------- | -------------------- |
+| Gantabya Kumar Bayda | Project Lead            | Navbar + Consistency |
+| [Team Member 2 Name] | Hero Section Designer   | Hero Section         |
+| Maqsuda Mahboob      | About Section Designer  | About Section        |
+| Aminur Rahman        | Footer Section Designer | Footer Section       |
+
+## 🛠️ Tech Stack
+
+- Frontend: React (Vite)
+- Styling: Tailwind CSS + DaisyUI
+- Deployment: Ready for GitHub Pages / Vercel / Netlify
+
+## 🚀 Quick Start
+
+```bash
+# Clone করো
+git clone https://github.com/YOUR_USERNAME/tasty-haat.git
+
+# ফোল্ডারে যাও
+cd tasty-haat
+
+# Dependencies ইনস্টল করো
+npm install
+
+# Development server চালাও
+npm run dev
+```
