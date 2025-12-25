@@ -3,7 +3,7 @@ import React from "react";
 const Hero = () => {
   return (
     <div>
-      <h1>This is hero section</h1>
+      <h1>ZERO SECTION TO DEVELOPMENT BRANCH</h1>
     </div>
   );
 };
