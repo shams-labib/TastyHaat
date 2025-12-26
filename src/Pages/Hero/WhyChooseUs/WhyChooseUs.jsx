@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import { Utensils, Leaf, Truck, Star } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const features = [
   {
@@ -48,12 +51,17 @@ const iconAnimations = `
 `;
 
 const WhyChooseUs = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   return (
     <section className="py-20 bg-base-100 dark:bg-gray-800">
       <style>{iconAnimations}</style>
 
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-14">
+        {/* Header */}
+        <div className="text-center mb-14" data-aos="fade-up">
           <h2 className="text-4xl font-bold mb-4 dark:text-white">
             Why <span className="text-primary">Food Lovers</span> Choose Us
           </h2>
@@ -62,11 +70,17 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
+        {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((item) => {
+          {features.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div key={item.id} className="card bg-base-200 shadow-md">
+              <div
+                key={item.id}
+                className="card bg-base-200 shadow-md"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
                 <div className="card-body items-center text-center">
                   <div
                     style={{

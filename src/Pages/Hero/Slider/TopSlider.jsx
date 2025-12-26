@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const sliderImages = [
   {
@@ -22,9 +25,16 @@ const sliderImages = [
 ];
 
 const TopSlider = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
+
   return (
     <div className="container mx-auto">
-      <div className="relative w-full h-[250px] md:h-[420px] overflow-hidden my-[60px] md:rounded-xl">
+      <div
+        className="relative w-full h-[250px] md:h-[420px] overflow-hidden my-[60px] md:rounded-xl"
+        data-aos="fade-up"
+      >
         <Swiper
           modules={[Autoplay, Pagination]}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
@@ -40,9 +50,14 @@ const TopSlider = () => {
                   src={item.img}
                   className="w-full h-full object-cover"
                   alt="slider"
+                  data-aos="zoom-in"
                 />
 
-                <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center text-white px-6">
+                <div
+                  className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center text-white px-6"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
                   <h2 className="text-3xl md:text-4xl font-bold mb-2 drop-shadow-lg">
                     {item.title}
                   </h2>
