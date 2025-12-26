@@ -12,6 +12,7 @@ const Navbar = () => {
     { name: "About", href: "#about" },
     { name: "Menu", href: "#menu" },
     { name: "Contact", href: "#contact" },
+    { name: "dashboard", href: "/dashboard" },
   ];
 
   // Close mobile menu on scroll
@@ -26,9 +27,9 @@ const Navbar = () => {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="text-2xl font-bold">
+          <span href="#home" className="text-2xl font-bold">
             <Logo />
-          </a>
+          </span>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8">
