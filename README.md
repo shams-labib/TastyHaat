@@ -1,11 +1,14 @@
 ## 👥 Team Members & Responsibilities
 
-| Member               | Role                    | Section Responsible  |
-| -------------------- | ----------------------- | -------------------- |
-| Shams all Labib      | Project Lead            | Hero Section         |
-| Gantabya Kumar Bayda | Hero Section Designer   | Navbar + Consistency |
-| Maqsuda Mahboob      | About Section Designer  | About Section        |
-| Aminur Rahman        | Footer Section Designer | Footer Section       |
+| Member               | Role                           | Section Responsible                      |
+| -------------------- | ------------------------------ | ---------------------------------------- |
+| Shams all Labib      | Project Lead                   | All Section checker and updated the code |
+| Gantabya Kumar Bayda | Hero Section Designer          | Navbar + Consistency + All Menu          |
+| Maqsuda Mahboob      | About Section Designer         | About Section                            |
+| Aminur Rahman        | Footer Section Designer        | Footer Section                           |
+| Shafin Ahmed         | User Dashboard Designer        | User Dashboard                           |
+| Aftab                | Food seller Dashboard Designer | Food Seller Dashboard                    |
+| Taslima Akter        | Landing page Section Designer  | More Landing page add                    |
 
 ## 🛠️ Tech Stack
 
