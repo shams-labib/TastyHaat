@@ -30,5 +30,133 @@
     "description": "Rich and moist chocolate cake with fudge frosting",
     "isAvailable": true,
     "image": "https://i.ibb.co.com/XfjJ3ZDd/premium-photo-1723867233123-76f9c3e357ee.avif"
+  },
+  {
+    "id": 5,
+    "name": "Beef Burger",
+    "price": 420,
+    "description": "Juicy beef patty with cheese, onion, and BBQ sauce",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/21SXrwLB/big-sandwich-hamburger-burger-with-beef-tomato-cheese-pickled-cucumber-2829-6069.avif"
+  },
+  {
+    "id": 6,
+    "name": "Pepperoni Pizza",
+    "price": 600,
+    "description": "Cheesy pizza topped with spicy pepperoni slices",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/ch1X9zBm/istockphoto-483367738-612x612.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Chicken Fried Rice",
+    "price": 280,
+    "description": "Stir-fried rice with chicken, vegetables, and soy sauce",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/YTBQYBKb/Chicken-Fried-Rice-Small-2.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Spaghetti Bolognese",
+    "price": 450,
+    "description": "Spaghetti with rich beef bolognese sauce",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/sdZtWMbt/spaghetti-bolognese-43191-16x9.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Grilled Chicken",
+    "price": 520,
+    "description": "Tender grilled chicken served with herbs and sauce",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/ch7VwZwL/Grilled-Tandoori-Chicken.webp"
+  },
+  {
+    "id": 10,
+    "name": "French Fries",
+    "price": 180,
+    "description": "Crispy golden fries with seasoning",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/5zFYxMJ/pexels-kalz-2498440-480x480.webp"
+  },
+  {
+    "id": 11,
+    "name": "Club Sandwich",
+    "price": 320,
+    "description": "Triple-layer sandwich with chicken, egg, and veggies",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/zT518GKK/sandwiches-club-sandwich-flickr-jorge-11-George-Groutas-4068787191-4x3-1.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Chicken Shawarma",
+    "price": 360,
+    "description": "Middle Eastern wrap with spiced chicken and sauce",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/Gfn38pjp/Chicken-Shawarma-3-480x270.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Vegetable Soup",
+    "price": 220,
+    "description": "Healthy soup with fresh seasonal vegetables",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/8WLR4fW/vegetable-soup-thecozyapron-1.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Pancakes",
+    "price": 260,
+    "description": "Fluffy pancakes served with syrup and butter",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/B5NLHhQY/8-Oafo-IVA.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Ice Cream Sundae",
+    "price": 200,
+    "description": "Vanilla ice cream with chocolate syrup and nuts",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/C3Sc7RR0/photo-1657225953401-5f95007fc8e0.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Chicken Nuggets",
+    "price": 240,
+    "description": "Crispy chicken nuggets served with dip",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/VpWK5bBm/83114901.avif"
+  },
+  {
+    "id": 17,
+    "name": "Grilled Sandwich",
+    "price": 210,
+    "description": "Toasted sandwich with cheese and vegetables",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/pBKDZmZF/61804300.avif"
+  },
+  {
+    "id": 18,
+    "name": "Chicken Pasta",
+    "price": 480,
+    "description": "Creamy pasta with chicken and herbs",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/ZR8bpQ61/60276256.avif"
+  },
+  {
+    "id": 19,
+    "name": "Fruit Salad",
+    "price": 230,
+    "description": "Fresh seasonal fruits with light dressing",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/HTn4gnR7/60783388.avif"
+  },
+  {
+    "id": 20,
+    "name": "Chicken Biryani",
+    "price": 550,
+    "description": "Traditional spiced rice with tender chicken",
+    "isAvailable": true,
+    "image": "https://i.ibb.co.com/PGCVCTxx/71275689.avif"
   }
 ]
