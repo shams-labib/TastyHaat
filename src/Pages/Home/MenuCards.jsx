@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import AOS from "aos";
 
 const MenuCards = () => {
   const [menu, setMenu] = useState([]);
@@ -11,36 +12,88 @@ const MenuCards = () => {
       .catch((err) => console.error("Error loading menu:", err));
   }, []);
 
+  useEffect(() => {
+    AOS.refresh();
+  }, [menu]);
+
   return (
-    <div id="menu" className="max-w-7xl mx-auto">
-      <div className="min-h-screen bg-base-100 dark:bg-gray-800 py-16 px-5">
-        <h1 className="text-4xl dark:text-white font-bold text-center mb-12">Our <span className="text-primary">Menu</span></h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {menu.map((item) => (
+    <div id="menu" className="container mx-auto">
+      <div className="bg-base-100 dark:bg-gray-800 py-16 px-5">
+        <h1
+          data-aos="fade-up"
+          className="text-4xl dark:text-white font-bold text-center mb-12"
+        >
+          Our <span className="text-primary">Menu</span>
+        </h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {menu.map((item, index) => (
             <motion.div
               key={item.id}
-              className="dark:bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl cursor-pointer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ type: "tween", duration: 0.15 }} // faster hover
+              className="
+    w-full
+    bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg
+    rounded-2xl
+    shadow-xl border border-gray-200 dark:border-gray-700
+    overflow-hidden
+    cursor-pointer
+    transition-all duration-300
+  "
             >
-              <motion.div
-                className="overflow-hidden"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <img src={item.image} alt={item.name} className="w-full h-48 object-cover" />
-              </motion.div>
+              {/* Image */}
+              <div className="relative overflow-hidden">
+                <motion.img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-44 object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                />
 
-              <div className="p-6">
-                <h2 className="text-xl font-bold mb-2">{item.name}</h2>
-                <p className="text-gray-600 text-sm text-justify mb-4">{item.description}</p>
-                <p className="text-sm font-semibold text-primary mb-4">${item.price}</p>
+                {/* Price badge */}
+                <span
+                  className="
+                  absolute top-3 right-3
+                  bg-primary text-white
+                  text-xs font-semibold
+                  px-3 py-1 rounded-full
+                  shadow-md
+                "
+                >
+                  ${item.price}
+                </span>
+              </div>
+
+              {/* Content */}
+              <div className="p-5">
+                <h2 className="text-lg font-semibold mb-2 dark:text-white">
+                  {item.name}
+                </h2>
+
+                <p className="text-gray-700 dark:text-gray-200 text-sm leading-relaxed mb-4">
+                  {item.description}
+                </p>
+
+                {/* Divider */}
+                <div className="w-full border-t border-dashed border-gray-300 dark:border-gray-600 mb-4 opacity-60"></div>
+
+                {/* Action */}
                 <button
-                  className={`w-full btn rounded-lg ${item.isAvailable
-                      ? "bg-primary hover:bg-secondary"
-                      : "bg-gray-400 cursor-not-allowed"
-                    } dark:text-white font-semibold transition-colors duration-300`}
                   disabled={!item.isAvailable}
+                  className={`
+                    w-full btn rounded-lg font-semibold
+                    transition-colors duration-300
+                    ${
+                      item.isAvailable
+                        ? "bg-primary hover:bg-secondary"
+                        : "bg-gray-400 cursor-not-allowed"
+                    }
+                    dark:text-white
+                  `}
                 >
                   {item.isAvailable ? "Order Now" : "Unavailable"}
                 </button>

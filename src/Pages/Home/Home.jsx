@@ -4,13 +4,16 @@ import Hero from "../Hero/Hero";
 import WhyChooseUs from "../Hero/WhyChooseUs/WhyChooseUs";
 import MenuCards from "./MenuCards";
 import Contact from "./Contact";
+import About from "./About";
 
 const Home = () => {
   return (
     <div>
       <TopSlider></TopSlider>
-      <WhyChooseUs></WhyChooseUs>
       <MenuCards></MenuCards>
+      <Hero></Hero>
+      <About></About>
+      <WhyChooseUs></WhyChooseUs>
       <Contact></Contact>
     </div>
   );
