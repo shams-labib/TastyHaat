@@ -5,6 +5,7 @@ import Footer from "../Components/Footer/Footer";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ScrollToTop from "../Components/ScrollToTop/ScrollToTop";
 
 const RootLayout = () => {
   useEffect(() => {
@@ -18,6 +19,7 @@ const RootLayout = () => {
 
   return (
     <div className="dark:bg-gray-800">
+      <ScrollToTop />
       <Navbar />
       <section className="min-h-screen">
         <Outlet />

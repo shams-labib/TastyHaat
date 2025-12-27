@@ -20,6 +20,18 @@ export const router = createBrowserRouter([
         Component: Home,
       },
       {
+        path: "/all-menu",
+        Component: AllMenu,
+      },
+      {
+        path: "/about-us",
+        Component: AboutUs,
+      },
+      {
+        path: "/contact-us",
+        Component: ContactUs,
+      },
+      {
         path: "/login",
         Component: Login,
       },

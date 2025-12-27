@@ -34,7 +34,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/about"
+                  to="/about-us"
                   className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
                 >
                   About
@@ -42,7 +42,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  to="/contact-us"
                   className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
                 >
                   Contact
