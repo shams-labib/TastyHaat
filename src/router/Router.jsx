@@ -4,9 +4,10 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Authentication/Login/Login";
 import ErrorPage from "../Pages/Errorpage/Errorpage";
 import Dashboard from "../DashboardLayout/Dashboard/Dashboard";
-import AllMenu from "../Pages/AllMenu/AllMenu";
-import AboutUs from "../Pages/AboutUs/AboutUs";
-import ContactUs from "../Pages/ContactUs/ContactUs";
+import Profile from "../DashboardLayout/UserDashboard/Profile";
+import Menu from "../DashboardLayout/UserDashboard/Menu";
+import MyOrders from "../DashboardLayout/UserDashboard/MyOrders";
+import PlaceOrders from "../DashboardLayout/UserDashboard/PlaceOrders";
 
 export const router = createBrowserRouter([
   {
@@ -41,5 +42,23 @@ export const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: 'profile',
+        Component: Profile
+      },
+      {
+        path: 'menu',
+        Component: Menu
+      },
+      {
+        path: 'my-orders',
+        Component: MyOrders
+      },
+      {
+        path: 'place-orders',
+        Component: PlaceOrders
+      }
+    ]
   },
 ]);

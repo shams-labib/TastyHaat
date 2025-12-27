@@ -1,6 +1,9 @@
 import React from "react";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUser, FaUserShield } from "react-icons/fa";
 import Logo from "../../Components/shared/Logo/Logo";
+import { MdFormatListBulleted, MdFormatListBulletedAdd, MdRestaurantMenu } from "react-icons/md";
+import { IoRestaurant } from "react-icons/io5";
+import { NavLink, Outlet } from "react-router";
 
 const DashboardLayout = () => {
   return (
@@ -17,35 +20,31 @@ const DashboardLayout = () => {
 
         {/* Sidebar Section */}
         <div className="px-4 py-6 space-y-2">
-          <SidebarItem icon={<FaUserCircle size={22} />} text="Profile" />
-          <SidebarItem icon={<FaUserCircle size={22} />} text="Admin" />
+          <SidebarItem to='/dashboard/profile' icon={<FaUser size={22} />} text="Profile" />
+          <SidebarItem to='/dashboard/admin' icon={<FaUserShield size={22} />} text="Admin" />
+          <SidebarItem to='/dashboard/menu' icon={<IoRestaurant size={22} />} text="Menu" />
+          <SidebarItem to='/dashboard/my-orders' icon={<MdFormatListBulleted size={22} />} text="My Orders" />
+          <SidebarItem to='/dashboard/place-orders' icon={<MdFormatListBulletedAdd size={22} />} text="Place Orders" />
           {/* Add more items here */}
         </div>
       </aside>
 
       {/* MAIN CONTENT */}
       <main className="flex-1 p-6 lg:p-10 overflow-auto">
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">
-            Profile
-          </h1>
-          <p className="text-gray-600 dark:text-gray-300">
-            Welcome to your profile section. You can add your content or
-            functionality here. Use cards, tables, or charts to display your
-            data elegantly.
-          </p>
-        </div>
+        
+          <Outlet />
+
       </main>
     </div>
   );
 };
 
 /* COMPONENT: Sidebar Item */
-const SidebarItem = ({ icon, text }) => (
-  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-900 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-all duration-200 shadow-sm">
+const SidebarItem = ({ icon, text, to }) => (
+  <NavLink to={to} className="flex items-center gap-3 p-3 rounded-lg text-gray-100 hover:bg-blue-50 dark:hover:bg-gray-900 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-all duration-200 shadow-sm">
     {icon}
     <span className="font-medium text-gray-800 dark:text-gray-100">{text}</span>
-  </div>
+  </NavLink>
 );
 
 export default DashboardLayout;
