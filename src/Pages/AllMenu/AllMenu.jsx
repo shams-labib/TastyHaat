@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
+import { Link } from "react-router";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -11,6 +12,7 @@ const AllMenu = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    // fetch("/menus")
     fetch("/menu.json")
       .then((res) => res.json())
       .then((data) => setMenu(data))
@@ -166,21 +168,13 @@ const AllMenu = () => {
                   <div className="w-full border-t border-dashed border-gray-300 dark:border-gray-600 mb-4 opacity-60"></div>
 
                   {/* Action */}
-                  <button
-                    disabled={!item.isAvailable}
-                    className={`
-                    w-full btn rounded-lg font-semibold
-                    transition-colors duration-300
-                    ${
-                      item.isAvailable
-                        ? "bg-primary hover:bg-secondary"
-                        : "bg-gray-400 cursor-not-allowed"
-                    }
-                    dark:text-white
-                  `}
+                  <Link
+                    to={`/all-menu/${item.id}`}
+                    className="w-full btn bg-primary hover:bg-secondary rounded-lg font-semibold
+                    transition-colors duration-300 dark:text-white"
                   >
-                    {item.isAvailable ? "Order Now" : "Unavailable"}
-                  </button>
+                    View Details
+                  </Link>
                 </div>
               </motion.div>
             ))
