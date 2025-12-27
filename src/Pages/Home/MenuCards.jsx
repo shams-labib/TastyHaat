@@ -27,22 +27,14 @@ const MenuCards = () => {
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {menu.map((item, index) => (
+          {menu.slice(0, 4).map((item, index) => (
             <motion.div
               key={item.id}
               data-aos="fade-up"
               data-aos-delay={index * 100}
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: "tween", duration: 0.15 }} // faster hover
-              className="
-    w-full
-    bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg
-    rounded-2xl
-    shadow-xl border border-gray-200 dark:border-gray-700
-    overflow-hidden
-    cursor-pointer
-    transition-all duration-300
-  "
+              className="w-full bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden cursor-pointer transition-all duration-300"
             >
               {/* Image */}
               <div className="relative overflow-hidden">
