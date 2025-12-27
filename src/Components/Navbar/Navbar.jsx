@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link, NavLink } from "react-router";
 import Logo from "../shared/Logo/Logo";
+import useAuth from "../../Context/useAuth/useAuth";
 
 const navLinks = [
   { name: "Home", to: "/" },
@@ -13,6 +14,8 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { user } = useAuth();
 
   // Close mobile menu on scroll
   useEffect(() => {
@@ -33,9 +36,9 @@ const Navbar = () => {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold">
+          <span to="/" className="text-2xl font-bold">
             <Logo />
-          </Link>
+          </span>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8">
