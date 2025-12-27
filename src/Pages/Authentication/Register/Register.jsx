@@ -6,12 +6,14 @@ import useAuth from "../../../Context/useAuth/useAuth";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Loader from "../../Loader/Loader";
+import useAxiosSecure from "../../../Context/useaxios/useAxiosSecure";
 
 const MySwal = withReactContent(Swal);
 
 const Register = () => {
   const navigate = useNavigate();
   const { googleLogin, registerEmail, updateUserProfile, loading } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -47,12 +49,12 @@ const Register = () => {
   };
 
   const onSubmit = async (data) => {
-    const { email, password, name, phone, location, photo } = data;
+    const { name, email, password, phone, location, photo } = data;
 
     try {
-      // 1️⃣ Upload photo to ImgBB
+      // 1️ Upload photo to ImgBB
       const formData = new FormData();
-      const photoFile = photo[0]; // get the selected file
+      const photoFile = photo[0];
       formData.append("image", photoFile);
 
       const imgbbRes = await fetch(
@@ -61,29 +63,44 @@ const Register = () => {
       );
 
       const imgData = await imgbbRes.json();
-
       if (!imgData.success) throw new Error("Image upload failed");
-
       const photoURL = imgData.data.url;
 
-      // 2️⃣ Register user with email & password
+      // 2️ Register user with Firebase email & password
       await registerEmail(email, password);
 
-      // 3️⃣ Update Firebase profile
+      // 3️ Update Firebase profile
       await updateUserProfile({ displayName: name, photoURL });
 
-      // 4️⃣ Show success alert
-      MySwal.fire({
-        title: <p>🍔 Welcome {name}!</p>,
-        text: "Your account has been created successfully!",
-        icon: "success",
-        background: "#fff5e6",
-        color: "#ff4d4d",
-        confirmButtonColor: "#ff4d4d",
-        customClass: { popup: "rounded-3xl shadow-lg" },
-      });
+      // 4️ Prepare full user info to send to server
+      const userData = {
+        name,
+        email,
+        phone,
+        location,
+        photoURL,
+        role: "user",
+        createdAt: new Date(),
+      };
 
-      navigate("/");
+      // 5️⃣ Send data to server using axiosSecure
+      const response = await axiosSecure.post("/users", userData);
+
+      if (response.data.insertedId || response.status === 200) {
+        MySwal.fire({
+          title: <p>🍔 Welcome {name}!</p>,
+          text: "Your account has been successfully created and saved!",
+          icon: "success",
+          background: "#fff5e6",
+          color: "#ff4d4d",
+          confirmButtonColor: "#ff4d4d",
+          customClass: { popup: "rounded-3xl shadow-lg" },
+        });
+
+        navigate("/");
+      } else {
+        throw new Error("Failed to save user on server");
+      }
     } catch (err) {
       MySwal.fire({
         title: <p>⚠️ Registration Failed</p>,
@@ -169,10 +186,6 @@ const Register = () => {
               placeholder="Phone Number"
               {...register("phone", {
                 required: "Phone number is required",
-                pattern: {
-                  value: /^(?:\+8801|01)[3-9]\d{8}$/,
-                  message: "Invalid Bangladeshi phone number",
-                },
               })}
               className="w-full p-4 rounded-2xl border border-gray-200 dark:border-gray-600 bg-white/60 dark:bg-gray-700 text-gray-800 dark:text-gray-100 outline-none focus:ring-2 focus:ring-red-500 transition duration-300"
             />
