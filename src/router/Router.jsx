@@ -7,12 +7,14 @@ import Dashboard from "../DashboardLayout/Dashboard/Dashboard";
 import Profile from "../DashboardLayout/UserDashboard/Profile";
 import Menu from "../DashboardLayout/UserDashboard/Menu";
 import MyOrders from "../DashboardLayout/UserDashboard/MyOrders";
-import PlaceOrders from "../DashboardLayout/UserDashboard/PlaceOrders";
+
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import AllMenu from "../Pages/AllMenu/AllMenu";
 import Register from "../Pages/Authentication/Register/Register";
 import Login from "../Pages/Authentication/Login/Login";
+import AdminDashboard from "../Pages/Dashboard/Admin/Admin";
+import UsersManagement from "../Pages/Dashboard/UsersManagement/UsersManagement";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +65,14 @@ export const router = createBrowserRouter([
       {
         path: "my-orders",
         Component: MyOrders,
+      },
+      {
+        path: "admin",
+        Component: AdminDashboard,
+      },
+      {
+        path: "users-management",
+        Component: UsersManagement,
       },
     ],
   },

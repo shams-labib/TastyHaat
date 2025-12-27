@@ -4,6 +4,7 @@ import Logo from "../../Components/shared/Logo/Logo";
 import {
   MdFormatListBulleted,
   MdFormatListBulletedAdd,
+  MdManageAccounts,
   MdRestaurantMenu,
 } from "react-icons/md";
 import { IoRestaurant } from "react-icons/io5";
@@ -35,6 +36,11 @@ const DashboardLayout = () => {
             to="/dashboard/admin"
             icon={<FaUserShield size={22} />}
             text="Admin"
+          />
+          <SidebarItem
+            to="/dashboard/users-management"
+            icon={<MdManageAccounts size={22} />}
+            text="Users Management"
           />
           <SidebarItem
             to="/dashboard/menu"
