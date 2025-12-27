@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const demoUsers = [
   {
     id: 1,
-    name: "Shams Uddin",
+    name: "Sefu Da",
     role: "User",
     email: "shams@example.com",
     number: "+880123456789",
@@ -14,7 +14,7 @@ const demoUsers = [
   },
   {
     id: 2,
-    name: "Ayesha Rahman",
+    name: "Sheikh Hasina",
     role: "User",
     email: "ayesha@example.com",
     number: "+880987654321",
@@ -23,7 +23,7 @@ const demoUsers = [
   },
   {
     id: 3,
-    name: "Rafiq Ahmed",
+    name: "Hero to Zero Alom",
     role: "Food Seller",
     email: "rafiq@example.com",
     number: "+8801122334455",
