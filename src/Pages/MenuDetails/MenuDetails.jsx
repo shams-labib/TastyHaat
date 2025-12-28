@@ -7,13 +7,12 @@ const MenuDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user, loading } = useAuth();
+
   const [menu, setMenu] = useState(null);
   const [fetching, setFetching] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    // You can replace this with your real API endpoint
-
-    // fetch("/menus/:id")
     fetch("/menu.json")
       .then((res) => res.json())
       .then((data) => {
@@ -21,10 +20,7 @@ const MenuDetails = () => {
         setMenu(item || null);
         setFetching(false);
       })
-      .catch((err) => {
-        console.error(err);
-        setFetching(false);
-      });
+      .catch(() => setFetching(false));
   }, [id]);
 
   if (loading || fetching) return <Loader />;
@@ -36,17 +32,16 @@ const MenuDetails = () => {
 
   if (!menu)
     return (
-      <p className="text-center text-gray-500 dark:text-gray-300 mt-10">
-        Menu not found.
+      <p className="text-center text-gray-500 dark:text-gray-400 mt-10">
+        Menu not found
       </p>
     );
 
-  const handleOrder = async () => {
+  const handleConfirmOrder = async () => {
     const orderData = {
       userId: user.uid,
       username: user.displayName || "User",
       email: user.email,
-      phone: user.phoneNumber || "",
       menuId: menu.id,
       menuName: menu.name,
       price: menu.price,
@@ -63,54 +58,144 @@ const MenuDetails = () => {
       });
 
       if (res.ok) {
-        alert("Order created! Please proceed to payment.");
-        // Navigate to payment page or order summary
+        setShowModal(false);
         navigate("/dashboard/my-orders");
       } else {
-        alert("Failed to create order");
+        alert("Order failed");
       }
-    } catch (err) {
-      console.error(err);
+    } catch {
       alert("Something went wrong");
     }
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-5 space-y-6">
-      <div className="flex flex-col md:flex-row gap-6 bg-white dark:bg-gray-900 rounded-3xl shadow-lg overflow-hidden">
-        <img
-          src={menu.image}
-          alt={menu.name}
-          className="w-full md:w-1/2 h-64 md:h-auto object-cover"
-        />
+    <>
+      {/* MAIN SECTION */}
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-sky-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-4 py-16">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+          {/* IMAGE */}
+          <div className="relative group">
+            <img
+              src={menu.image}
+              alt={menu.name}
+              className="w-full h-[430px] object-cover rounded-[28px] shadow-2xl"
+            />
 
-        <div className="p-6 flex flex-col justify-between">
-          <div>
-            <h1 className="text-3xl font-bold mb-3 dark:text-white">
-              {menu.name}
-            </h1>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">
-              {menu.description}
-            </p>
-            <p className="text-xl font-semibold mb-6 dark:text-white">
-              Price: ${menu.price}
-            </p>
+            {/* OVERLAY */}
+            <div className="absolute inset-0 rounded-[28px] bg-gradient-to-t from-black/25 to-transparent" />
+
+            {/* PRICE */}
+            <div className="absolute bottom-6 left-6 bg-white/90 dark:bg-slate-900/90 px-6 py-3 rounded-2xl text-xl font-extrabold text-slate-900 dark:text-white shadow-lg">
+              ${menu.price}
+            </div>
           </div>
 
-          <button
-            onClick={handleOrder}
-            disabled={!menu.isAvailable}
-            className={`w-full py-3 rounded-lg font-semibold transition-colors duration-300 ${
-              menu.isAvailable
-                ? "bg-primary text-white hover:bg-secondary"
-                : "bg-gray-400 cursor-not-allowed text-gray-200"
-            }`}
-          >
-            {menu.isAvailable ? "Pay" : "Unavailable"}
-          </button>
+          {/* CONTENT */}
+          <div className="space-y-6">
+            <span className="inline-block px-4 py-1 rounded-full bg-indigo-100 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-sm font-semibold">
+              Chef Recommended
+            </span>
+
+            <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
+              {menu.name}
+            </h1>
+
+            <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+              {menu.description}
+            </p>
+
+            <ul className="space-y-2 text-slate-600 dark:text-slate-300">
+              <li>🍃 Fresh & hygienic ingredients</li>
+              <li>👨‍🍳 Handcrafted by expert chefs</li>
+              <li>🚚 Fast & safe delivery</li>
+            </ul>
+
+            <button
+              disabled={!menu.isAvailable}
+              onClick={() => setShowModal(true)}
+              className={`mt-6 px-12 py-4 rounded-2xl text-lg font-bold transition-all ${
+                menu.isAvailable
+                  ? "bg-gradient-to-r from-indigo-600 to-cyan-500 text-white hover:scale-105 hover:shadow-[0_15px_40px_rgba(99,102,241,0.4)]"
+                  : "bg-slate-400 cursor-not-allowed text-slate-200"
+              }`}
+            >
+              Order & Pay
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* MODAL */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="bg-white dark:bg-slate-900 w-[92%] max-w-lg rounded-3xl p-8 shadow-2xl animate-scaleIn">
+            <h2 className="text-2xl font-extrabold mb-6 text-slate-900 dark:text-white">
+              Payment Details
+            </h2>
+
+            <div className="space-y-4">
+              <input
+                readOnly
+                value={user.displayName || "User"}
+                className="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white outline-none"
+              />
+
+              <input
+                readOnly
+                value={user.email}
+                className="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white outline-none"
+              />
+
+              <input
+                readOnly
+                value={menu.name}
+                className="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white outline-none"
+              />
+
+              <input
+                readOnly
+                value={`Total: $${menu.price}`}
+                className="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white outline-none"
+              />
+            </div>
+
+            <div className="flex gap-4 mt-8">
+              <button
+                onClick={() => setShowModal(false)}
+                className="w-1/2 py-3 rounded-xl bg-slate-200 dark:bg-slate-700 font-semibold"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleConfirmOrder}
+                className="w-1/2 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-bold"
+              >
+                Confirm Pay
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ANIMATION */}
+      <style>
+        {`
+          .animate-scaleIn {
+            animation: scaleIn 0.3s ease-out;
+          }
+          @keyframes scaleIn {
+            from {
+              transform: scale(0.88);
+              opacity: 0;
+            }
+            to {
+              transform: scale(1);
+              opacity: 1;
+            }
+          }
+        `}
+      </style>
+    </>
   );
 };
 

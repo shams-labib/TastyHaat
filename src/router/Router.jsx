@@ -14,6 +14,8 @@ import Register from "../Pages/Authentication/Register/Register";
 import Login from "../Pages/Authentication/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import MenuDetails from "../Pages/MenuDetails/MenuDetails";
+import AdminDashboard from "../Pages/Dashboard/Admin/Admin";
+import UsersManagement from "../Pages/Dashboard/UsersManagement/UsersManagement";
 
 export const router = createBrowserRouter([
   {

@@ -36,7 +36,7 @@ const chartData = [
   { name: "Jun", orders: 100, revenue: 1400, members: 60 },
 ];
 
-const Dashboard = () => {
+const AdminDashboard = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
@@ -195,4 +195,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default AdminDashboard;
