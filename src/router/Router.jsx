@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import RootLayout from "../RootLayout/RootLayout";
 import Home from "../Pages/Home/Home";
-
 import ErrorPage from "../Pages/Errorpage/Errorpage";
 import Dashboard from "../DashboardLayout/Dashboard/Dashboard";
 import Profile from "../DashboardLayout/UserDashboard/Profile";
@@ -13,8 +12,8 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import AllMenu from "../Pages/AllMenu/AllMenu";
 import Register from "../Pages/Authentication/Register/Register";
 import Login from "../Pages/Authentication/Login/Login";
-import AdminDashboard from "../Pages/Dashboard/Admin/Admin";
-import UsersManagement from "../Pages/Dashboard/UsersManagement/UsersManagement";
+import PrivateRoute from "./PrivateRoute";
+import MenuDetails from "../Pages/MenuDetails/MenuDetails";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +28,14 @@ export const router = createBrowserRouter([
       {
         path: "/all-menu",
         Component: AllMenu,
+      },
+      {
+        path: "/all-menu/:id",
+        element: (
+          <PrivateRoute>
+            <MenuDetails></MenuDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/about-us",
