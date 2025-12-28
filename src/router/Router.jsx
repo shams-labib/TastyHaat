@@ -6,7 +6,7 @@ import Dashboard from "../DashboardLayout/Dashboard/Dashboard";
 import Profile from "../DashboardLayout/UserDashboard/Profile";
 import Menu from "../DashboardLayout/UserDashboard/Menu";
 import MyOrders from "../DashboardLayout/UserDashboard/MyOrders";
-import PlaceOrders from "../DashboardLayout/UserDashboard/PlaceOrders";
+
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import AllMenu from "../Pages/AllMenu/AllMenu";
@@ -72,6 +72,14 @@ export const router = createBrowserRouter([
       {
         path: "my-orders",
         Component: MyOrders,
+      },
+      {
+        path: "admin",
+        Component: AdminDashboard,
+      },
+      {
+        path: "users-management",
+        Component: UsersManagement,
       },
     ],
   },
