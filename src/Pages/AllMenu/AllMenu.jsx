@@ -6,22 +6,22 @@ import { Link } from "react-router";
 const ITEMS_PER_PAGE = 12;
 
 const AllMenu = () => {
-  const [menu, setMenu] = useState([]);
+  const [menus, setMenus] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    // fetch("/menus")
-    fetch("/menu.json")
+    const fetchUrl = `${import.meta.env.VITE_API_URL}/menus`;
+    fetch(fetchUrl)
       .then((res) => res.json())
-      .then((data) => setMenu(data))
+      .then((data) => setMenus(data))
       .catch((err) => console.error("Error loading menu:", err));
   }, []);
 
   useEffect(() => {
     AOS.refresh();
-  }, [menu]);
+  }, [menus]);
 
   useEffect(() => {
     window.scrollTo({
@@ -30,12 +30,12 @@ const AllMenu = () => {
     });
   }, [currentPage]);
 
-  const filteredMenu = useMemo(() => {
-    let data = [...menu];
+  const filteredMenus = useMemo(() => {
+    let data = [...menus];
 
     if (searchTerm) {
-      data = data.filter((item) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      data = data.filter((menu) =>
+        menu.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
@@ -48,11 +48,11 @@ const AllMenu = () => {
     }
 
     return data;
-  }, [menu, searchTerm, sortOrder]);
+  }, [menus, searchTerm, sortOrder]);
 
-  const totalPages = Math.ceil(filteredMenu.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(filteredMenus.length / ITEMS_PER_PAGE);
 
-  const paginatedMenu = filteredMenu.slice(
+  const paginatedMenus = filteredMenus.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
@@ -84,13 +84,7 @@ const AllMenu = () => {
               placeholder="Search menu..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="
-                w-full px-4 py-3 rounded-l-lg
-                bg-white dark:bg-gray-800
-                border border-gray-300 dark:border-gray-700
-                text-gray-800 dark:text-gray-100
-                focus:outline-none focus:ring-2 focus:ring-primary
-              "
+              className=" w-full px-4 py-3 rounded-l-lg bg-base-100 border border-base-300 text-base-content placeholder:text-base-content/60 outline-none focus:outline-none focus:border-primary transition-all"
             />
             <button
               type="submit"
@@ -105,13 +99,7 @@ const AllMenu = () => {
               setSortOrder(e.target.value);
               setCurrentPage(1);
             }}
-            className="
-              w-full md:w-56 px-4 py-3 rounded-lg
-              bg-white dark:bg-gray-800
-              border border-gray-300 dark:border-gray-700
-              text-gray-800 dark:text-gray-100
-              focus:outline-none focus:ring-2 focus:ring-primary
-            "
+            className="w-full md:w-56 px-4 py-3 rounded-lg bg-base-100 dark:bg-gray-800 border border-base-300 text-base-content outline-none focus:outline-none focus:border-primary transition-all"
           >
             <option value="">Sort by Price</option>
             <option value="low">Low → High</option>
@@ -120,10 +108,10 @@ const AllMenu = () => {
         </form>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {paginatedMenu.length > 0 ? (
-            paginatedMenu.map((item, index) => (
+          {paginatedMenus.length > 0 ? (
+            paginatedMenus.map((menu, index) => (
               <motion.div
-                key={item.id}
+                key={menu._id}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
                 whileHover={{ y: -5, scale: 1.02 }}
@@ -133,14 +121,13 @@ const AllMenu = () => {
                 {/* Image */}
                 <div className="relative overflow-hidden">
                   <motion.img
-                    src={item.image}
-                    alt={item.name}
+                    src={menu.image}
+                    alt={menu.name}
                     className="w-full h-44 object-cover"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                   />
 
-                  {/* Price badge */}
                   <span
                     className="
                   absolute top-3 right-3
@@ -150,28 +137,24 @@ const AllMenu = () => {
                   shadow-md
                 "
                   >
-                    ${item.price}
+                    ${menu.price}
                   </span>
                 </div>
 
-                {/* Content */}
                 <div className="p-5">
                   <h2 className="text-lg font-semibold mb-2 dark:text-white">
-                    {item.name}
+                    {menu.name}
                   </h2>
 
                   <p className="text-gray-700 dark:text-gray-200 text-sm leading-relaxed mb-4">
-                    {item.description}
+                    {menu.description}
                   </p>
 
-                  {/* Divider */}
                   <div className="w-full border-t border-dashed border-gray-300 dark:border-gray-600 mb-4 opacity-60"></div>
 
-                  {/* Action */}
                   <Link
-                    to={`/all-menu/${item.id}`}
-                    className="w-full btn bg-primary hover:bg-secondary rounded-lg font-semibold
-                    transition-colors duration-300 dark:text-white"
+                    to={`/all-menu/${menu._id}`}
+                    className="w-full btn bg-primary hover:bg-secondary rounded-lg font-semibold transition-colors duration-300 text-white"
                   >
                     View Details
                   </Link>

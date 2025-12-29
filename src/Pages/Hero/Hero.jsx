@@ -9,14 +9,14 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="bg-[#FFF8F6] py-20 my-[60px] container mx-auto rounded-xl dark:bg-gray-900">
+    <div className="bg-[#FFF8F6] py-20 my-15 container mx-auto rounded-xl dark:bg-gray-900">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6">
         {/* Text Content */}
         <div className="space-y-6 max-w-xl" data-aos="fade-right">
           <h1 className="text-5xl font-bold leading-[1.2]">
-            <span className="text-red-600">Fast, Fresh</span>
+            <span className="text-primary">Fast, Fresh</span>
             <br />
-            <span className="text-red-600">& Right</span>{" "}
+            <span className="text-primary">& Right</span>{" "}
             <span className="text-gray-900 dark:text-white">To Your Door</span>
           </h1>
 
@@ -29,19 +29,16 @@ const Hero = () => {
           </p>
 
           <div
-            className="flex w-full max-w-md"
+            className="flex w-full max-w-md items-center gap-2 border border-base-300 rounded-lg overflow-hidden shadow-md transition-all focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/40 bg-base-100 dark:bg-gray-800"
             data-aos="fade-up"
             data-aos-delay="400"
           >
             <input
               type="text"
-              className="input input-bordered rounded-r-none w-full outline-none"
               placeholder="Enter your location"
+              className="w-full px-4 py-2 bg-transparent text-base-content placeholder:text-base-content/60 border-none outline-none focus:outline-none"
             />
-            <button
-              className="btn bg-gradient-to-r from-amber-500 to-orange-600 text-white hover:from-amber-600 hover:to-orange-700 border-none rounded-lg
-              transition-all duration-500 ease-in-out shadow-md hover:shadow-lg"
-            >
+            <button className=" btn bg-gradient-to-r from-[#ff6000] to-[#fc3c2c] text-white border-none rounded-r-md transition-all duration-500 ease-in-out shadow-md hover:shadow-lg">
               Find Food
             </button>
           </div>
@@ -56,7 +53,7 @@ const Hero = () => {
           <img
             src={"https://i.ibb.co.com/twt2tWcr/image.png"}
             alt="food app"
-            className="w-[500px] drop-shadow-2xl"
+            className="w-125 drop-shadow-2xl"
           />
         </div>
       </div>

@@ -29,7 +29,7 @@ const About = () => {
           data-aos="fade-left"
         >
           <h2 className="text-4xl font-bold dark:text-white">
-            About <span className="text-red-600">TastyHaat</span>
+            About <span className="text-primary">TastyHaat</span>
           </h2>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
             At <span className="font-semibold text-primary">TastyHaat</span>, we
@@ -40,7 +40,7 @@ const About = () => {
           <p className="text-gray-600 dark:text-gray-400 text-md">
             With a passion for quality, speed, and customer satisfaction, we
             ensure every order is prepared with care and delivered hot and
-            fresh. From gourmet meals to quick snacks, we’ve got your cravings
+            fresh. From gourmet meals to quick snacks, we've got your cravings
             covered!
           </p>
 

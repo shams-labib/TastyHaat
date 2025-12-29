@@ -30,7 +30,7 @@ const Contact = () => {
 
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Let's Talk</h2>
           <p className="mb-6 sm:mb-8 text-white/80 leading-relaxed">
-            Questions? Feedback? Or just want to say hi? Reach out and we’ll get
+            Questions? Feedback? Or just want to say hi? Reach out and we'll get
             back to you in no time.
           </p>
 
@@ -95,7 +95,7 @@ const Contact = () => {
       </div>
 
       {/* Tailwind Custom Animations */}
-      <style jsx>{`
+      <style>{`
         @keyframes bounce-slow {
           0%,
           100% {
