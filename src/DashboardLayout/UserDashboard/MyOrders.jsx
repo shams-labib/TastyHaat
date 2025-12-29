@@ -1,81 +1,121 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    AOS.init({ once: true, duration: 800, easing: "ease-in-out" });
-  }, []);
-
-  useEffect(() => {
-    fetch("/orders.json")
+    const apiUrl = `${import.meta.env.VITE_API_URL}/orders`;
+    fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => setOrders(data))
-      .catch((err) => console.error("Error loading orders:", err));
+      .catch((err) => console.error("Error loading orders:", err))
+      .finally(() => setLoading(false));
   }, []);
 
+  const handlePay = (orderId) => {
+    console.log(`Pay for Id: ${orderId}`);
+  };
+
+  const pendingOrders = orders.filter((order) => order.status === "pending");
+
+  if (loading) {
+    return <div className="text-center py-20">Loading orders...</div>;
+  }
+
   return (
-    <div className="container mx-auto py-16 px-5">
-      <h1
-        data-aos="fade-up"
-        className="text-4xl dark:text-white font-bold text-center mb-12"
+    <div className="p-4 sm:p-6 min-h-screen">
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-3xl sm:text-4xl font-bold mb-12"
       >
         My <span className="text-primary">Orders</span>
-      </h1>
+      </motion.h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {orders.map((order, index) => (
-          <motion.div
-            key={order.id}
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
-            whileHover={{ y: -5, scale: 1.02 }}
-            transition={{ type: "tween", duration: 0.15 }}
-            className="
-              w-full
-              bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg
-              rounded-2xl
-              shadow-xl border border-gray-200 dark:border-gray-700
-              overflow-hidden
-              cursor-pointer
-              transition-all duration-300
-            "
-          >
-            <div className="relative overflow-hidden">
-              <motion.img
-                src={order.image}
-                alt={order.name}
-                className="w-full h-44 object-cover"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.5 }}
-              />
-            </div>
-
-            <div className="p-5">
-              <h2 className="text-lg font-semibold mb-2 dark:text-white">{order.name}</h2>
-
-              <p className="text-gray-700 dark:text-gray-200 text-sm mb-4">
-                Price: ৳{order.price}
-              </p>
-
-              <div className="w-full border-t border-dashed border-gray-300 dark:border-gray-600 mb-4 opacity-60" />
-
-              <span
-                className={`inline-block px-3 py-1 rounded-full font-semibold text-sm
-                  ${order.status === "Delivered"
-                    ? "bg-green-500 text-white"
-                    : "bg-yellow-500 text-white"
-                  }`}
+      {pendingOrders.length === 0 ? (
+        <p className="text-center text-base-content/60">
+          No pending orders found.
+        </p>
+      ) : (
+        <>
+          <div className="space-y-4 md:hidden">
+            {pendingOrders.map((order, index) => (
+              <motion.div
+                key={order._id || index}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="card bg-base-100 shadow-md"
               >
-                {order.status}
-              </span>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+                <div className="card-body p-4 space-y-2">
+                  <div className="flex justify-between">
+                    <h3 className="font-semibold">{order.menuName}</h3>
+                    <span className="badge badge-warning">Pending</span>
+                  </div>
+
+                  <p className="text-sm">
+                    <strong>Price:</strong> ${order.price}
+                  </p>
+
+                  <p className="text-sm">
+                    <strong>Time:</strong>{" "}
+                    {new Date(order.createdAt).toLocaleString()}
+                  </p>
+
+                  <button
+                    className="btn btn-sm btn-primary w-full mt-2"
+                    onClick={() => handlePay(order.menuId)}
+                  >
+                    Pay
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="overflow-x-auto hidden md:block">
+            {" "}
+            <table className="table table-zebra w-full">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Time</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pendingOrders.map((order, index) => (
+                  <motion.tr
+                    key={order._id || index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    <th>{index + 1}</th>
+                    <td>{order.menuName}</td>
+                    <td>${order.price}</td>
+                    <td>
+                      <span className="badge badge-warning">Pending</span>
+                    </td>
+                    <td>{new Date(order.createdAt).toLocaleString()}</td>
+                    <td>
+                      <button
+                        className="btn btn-sm btn-primary"
+                        onClick={() => handlePay(order.menuId)}
+                      >
+                        Pay
+                      </button>
+                    </td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </div>
   );
 };

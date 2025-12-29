@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
+import { Link } from "react-router";
 
 const MenuCards = () => {
-  const [menu, setMenu] = useState([]);
+  const [menus, setMenus] = useState([]);
 
   useEffect(() => {
-    fetch("/menu.json")
+    const fetchUrl = `${import.meta.env.VITE_API_URL}/menus`;
+    fetch(fetchUrl)
       .then((res) => res.json())
-      .then((data) => setMenu(data))
+      .then((data) => setMenus(data))
       .catch((err) => console.error("Error loading menu:", err));
   }, []);
 
   useEffect(() => {
     AOS.refresh();
-  }, [menu]);
+  }, [menus]);
 
   return (
     <div id="menu" className="container mx-auto">
@@ -23,30 +25,28 @@ const MenuCards = () => {
           data-aos="fade-up"
           className="text-4xl dark:text-white font-bold text-center mb-12"
         >
-          Our <span className="text-primary">Menu</span>
+          Popular <span className="text-primary">Menu</span>
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {menu.slice(0, 4).map((item, index) => (
+          {menus.slice(0, 4).map((menu, index) => (
             <motion.div
-              key={item.id}
+              key={menu._id}
               data-aos="fade-up"
               data-aos-delay={index * 100}
               whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ type: "tween", duration: 0.15 }} // faster hover
+              transition={{ type: "tween", duration: 0.15 }}
               className="w-full bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden cursor-pointer transition-all duration-300"
             >
-              {/* Image */}
               <div className="relative overflow-hidden">
                 <motion.img
-                  src={item.image}
-                  alt={item.name}
+                  src={menu.image}
+                  alt={menu.name}
                   className="w-full h-44 object-cover"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 />
 
-                {/* Price badge */}
                 <span
                   className="
                   absolute top-3 right-3
@@ -56,39 +56,27 @@ const MenuCards = () => {
                   shadow-md
                 "
                 >
-                  ${item.price}
+                  ${menu.price}
                 </span>
               </div>
 
-              {/* Content */}
               <div className="p-5">
                 <h2 className="text-lg font-semibold mb-2 dark:text-white">
-                  {item.name}
+                  {menu.name}
                 </h2>
 
                 <p className="text-gray-700 dark:text-gray-200 text-sm leading-relaxed mb-4">
-                  {item.description}
+                  {menu.description}
                 </p>
 
-                {/* Divider */}
                 <div className="w-full border-t border-dashed border-gray-300 dark:border-gray-600 mb-4 opacity-60"></div>
 
-                {/* Action */}
-                <button
-                  disabled={!item.isAvailable}
-                  className={`
-                    w-full btn rounded-lg font-semibold
-                    transition-colors duration-300
-                    ${
-                      item.isAvailable
-                        ? "bg-primary hover:bg-secondary"
-                        : "bg-gray-400 cursor-not-allowed"
-                    }
-                    dark:text-white
-                  `}
+                <Link
+                  to={`/all-menu/${menu._id}`}
+                  className="w-full btn bg-primary hover:bg-secondary rounded-lg font-semibold transition-colors duration-300 text-white"
                 >
-                  {item.isAvailable ? "Order Now" : "Unavailable"}
-                </button>
+                  View Details
+                </Link>
               </div>
             </motion.div>
           ))}

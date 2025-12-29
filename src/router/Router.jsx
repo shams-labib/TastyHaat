@@ -4,7 +4,6 @@ import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/Errorpage/Errorpage";
 import Dashboard from "../DashboardLayout/Dashboard/Dashboard";
 import Profile from "../DashboardLayout/UserDashboard/Profile";
-import Menu from "../DashboardLayout/UserDashboard/Menu";
 import MyOrders from "../DashboardLayout/UserDashboard/MyOrders";
 
 import ContactUs from "../Pages/ContactUs/ContactUs";
@@ -16,6 +15,9 @@ import PrivateRoute from "./PrivateRoute";
 import MenuDetails from "../Pages/MenuDetails/MenuDetails";
 import AdminDashboard from "../Pages/Dashboard/Admin/Admin";
 import UsersManagement from "../Pages/Dashboard/UsersManagement/UsersManagement";
+import AddMenu from "../Pages/Dashboard/AddMenu/AddMenu";
+import PostedMenus from "../Pages/Dashboard/PostedMenus/PostedMenus";
+import DashboradLanding from "../Pages/Dashboard/DashboradLanding/DashboradLanding";
 
 export const router = createBrowserRouter([
   {
@@ -64,12 +66,20 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
+        index: true,
+        Component: DashboradLanding,
+      },
+      {
         path: "profile",
         Component: Profile,
       },
       {
-        path: "menu",
-        Component: Menu,
+        path: "add-menu",
+        Component: AddMenu,
+      },
+      {
+        path: "my-menus",
+        Component: PostedMenus,
       },
       {
         path: "my-orders",

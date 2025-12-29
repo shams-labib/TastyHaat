@@ -11,7 +11,7 @@
   color-scheme: light;
 
   /* আপনাদের খাবারের থিমের কালার */
-  --color-primary: #e74c3c; /* মেইন রেড (যেমন Order Now বাটন) */
+  --color-primary: #fb2c36; /* মেইন রেড (যেমন Order Now বাটন) */
   --color-primary-content: #ffffff; /* প্রাইমারির উপরে টেক্সট/আইকন */
 
   --color-secondary: #f39c12; /* হলুদ/অরেঞ্জ (যেমন হাইলাইট) */

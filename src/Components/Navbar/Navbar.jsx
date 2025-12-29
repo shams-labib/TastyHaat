@@ -40,20 +40,16 @@ const Navbar = () => {
   const linkClass = ({ isActive }) =>
     `relative text-sm font-medium transition-all duration-300 ${
       isActive
-        ? "text-[#E63946] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-[#E63946]"
-        : "text-gray-700 dark:text-gray-300 hover:text-[#E63946]"
+        ? "text-primary after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-primary"
+        : "text-gray-700 dark:text-gray-300 hover:text-primary"
     }`;
 
   return (
     <header className="sticky top-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 shadow-md transition-colors">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="text-2xl font-bold">
-            <Logo />
-          </Link>
+          <Logo />
 
-          {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
               if (link.to === "/dashboard" && !user) return null;
@@ -64,7 +60,6 @@ const Navbar = () => {
               );
             })}
 
-            {/* Order Now Button */}
             {loading ? null : !user ? (
               <Link
                 to="/login"
