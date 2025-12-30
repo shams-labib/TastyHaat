@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router";
 
 const Menu = () => {
   const [menu, setMenu] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     AOS.init({
@@ -15,7 +17,7 @@ const Menu = () => {
   }, []);
 
   useEffect(() => {
-    fetch("/menu.json") 
+    fetch("/menu.json")
       .then((res) => res.json())
       .then((data) => setMenu(data))
       .catch((err) => console.error("Error loading menu:", err));
@@ -88,15 +90,15 @@ const Menu = () => {
 
                 {/* Action */}
                 <button
+                  onClick={() => item.isAvailable && navigate(`/all-menu/${item.id}`)}
                   disabled={!item.isAvailable}
                   className={`w-full btn rounded-lg font-semibold transition-colors duration-300
-                    ${
-                      item.isAvailable
-                        ? "bg-primary hover:bg-secondary"
-                        : "bg-gray-400 cursor-not-allowed"
+    ${item.isAvailable
+                      ? "bg-primary hover:bg-secondary"
+                      : "bg-gray-400 cursor-not-allowed"
                     }
-                    dark:text-white
-                  `}
+    dark:text-white
+  `}
                 >
                   {item.isAvailable ? "Order Now" : "Unavailable"}
                 </button>

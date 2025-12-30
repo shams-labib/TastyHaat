@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router";
 
 const sliderImages = [
   {
@@ -32,13 +33,13 @@ const TopSlider = () => {
   return (
     <div className="container mx-auto">
       <div
-        className="relative w-full h-[250px] md:h-[420px] overflow-hidden my-[60px] md:rounded-xl"
+        className="relative w-full h-62.5 md:h-105 overflow-hidden my-15 md:rounded-xl"
         data-aos="fade-up"
       >
         <Swiper
           modules={[Autoplay, Pagination]}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
+          // pagination={{ clickable: true }}
           loop={true}
           speed={900}
           className="w-full h-full"
@@ -63,9 +64,9 @@ const TopSlider = () => {
                   </h2>
                   <p className="text-lg mb-4">{item.subtitle}</p>
 
-                  <button className="btn bg-red-600 border-none text-white hover:bg-red-700 px-6">
+                  <Link to="/all-menu" className="btn bg-red-600 border-none shadow-none text-white hover:bg-red-700 px-6">
                     Order Now
-                  </button>
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>

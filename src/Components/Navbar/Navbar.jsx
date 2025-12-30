@@ -9,7 +9,7 @@ const navLinks = [
   { name: "All Menu", to: "/all-menu" },
   { name: "About", to: "/about-us" },
   { name: "Contact", to: "/contact-us" },
-  { name: "Dashboard", to: "/dashboard" },
+  { name: "Dashboard", to: "/dashboard/profile" },
 ];
 
 const Navbar = () => {
@@ -45,7 +45,7 @@ const Navbar = () => {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 shadow-md transition-colors">
+    <header className="sticky top-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg shadow-md transition-colors">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
