@@ -37,41 +37,110 @@ const MenuDetails = () => {
       </p>
     );
 
+  // const handleConfirmOrder = async () => {
+  //   const orderData = {
+  //     userId: user.uid,
+  //     username: user.displayName || "User",
+  //     email: user.email,
+  //     menuId: menu.id,
+  //     menuName: menu.name,
+  //     price: menu.price,
+  //     quantity: 1,
+  //     status: "pending",
+  //     createdAt: new Date().toISOString(),
+  //   };
+
+  //   try {
+  //     const res = await fetch("http://localhost:3000/orders", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(orderData),
+  //     });
+
+  //     if (res.ok) {
+  //       setShowModal(false);
+  //       navigate("/dashboard/my-orders");
+  //     } else {
+  //       alert("Order failed");
+  //     }
+  //   } catch {
+  //     alert("Something went wrong");
+  //   }
+  // };
+
+  // const handleConfirmOrder = async () => {
+  //   const paymentData = {
+  //     amount: menu.price,
+  //     userEmail: user.email,
+  //     userName: user.displayName || "User",
+  //     orderId: menu.id,
+  //     description: menu.name,
+  //   };
+
+  //   try {
+  //     const res = await fetch("http://localhost:3000/create-payment-intent", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(paymentData),
+  //     });
+
+  //     const data = await res.json();
+
+  //     if (data?.url) {
+  //       window.location.href = data.url; // Redirect to Stripe Checkout
+  //     } else {
+  //       alert("Payment initialization failed");
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     alert("Something went wrong");
+  //   }
+  // };
+
+
+
+
   const handleConfirmOrder = async () => {
-    const orderData = {
-      userId: user.uid,
-      username: user.displayName || "User",
-      email: user.email,
-      menuId: menu.id,
-      menuName: menu.name,
-      price: menu.price,
-      quantity: 1,
-      status: "pending",
-      createdAt: new Date().toISOString(),
+    const paymentData = {
+      amount: menu.price, // MUST be number
+      userEmail: user.email,
+      userName: user.displayName || "User",
+      description: menu.name,
     };
 
     try {
-      const res = await fetch("http://localhost:3000/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(orderData),
-      });
+      const response = await fetch(
+        "http://localhost:3000/create-payment-intent",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(paymentData),
+        }
+      );
 
-      if (res.ok) {
-        setShowModal(false);
-        navigate("/dashboard/my-orders");
+      const data = await response.json();
+
+      if (data?.url) {
+        window.location.href = data.url;
       } else {
-        alert("Order failed");
+        alert(data.error || "Payment initialization failed");
       }
-    } catch {
-      alert("Something went wrong");
+    } catch (error) {
+      console.error("Payment error:", error);
+      alert("Failed to connect to payment server");
     }
   };
+
+
+
+
 
   return (
     <>
       {/* MAIN SECTION */}
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-sky-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-4 py-16">
+      <div className="min-h-screen bg-linear-to-br from-indigo-50 via-sky-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-4 py-16">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center">
           {/* IMAGE */}
           <div className="relative group">
@@ -82,7 +151,7 @@ const MenuDetails = () => {
             />
 
             {/* OVERLAY */}
-            <div className="absolute inset-0 rounded-[28px] bg-gradient-to-t from-black/25 to-transparent" />
+            <div className="absolute inset-0 rounded-[28px] bg-linaer-to-t from-black/25 to-transparent" />
 
             {/* PRICE */}
             <div className="absolute bottom-6 left-6 bg-white/90 dark:bg-slate-900/90 px-6 py-3 rounded-2xl text-xl font-extrabold text-slate-900 dark:text-white shadow-lg">
@@ -113,11 +182,10 @@ const MenuDetails = () => {
             <button
               disabled={!menu.isAvailable}
               onClick={() => setShowModal(true)}
-              className={`mt-6 px-12 py-4 rounded-2xl text-lg font-bold transition-all ${
-                menu.isAvailable
-                  ? "bg-gradient-to-r from-indigo-600 to-cyan-500 text-white hover:scale-105 hover:shadow-[0_15px_40px_rgba(99,102,241,0.4)]"
-                  : "bg-slate-400 cursor-not-allowed text-slate-200"
-              }`}
+              className={`mt-6 px-12 py-4 rounded-2xl text-lg font-bold transition-all ${menu.isAvailable
+                ? "bg-linear-to-r from-indigo-600 to-cyan-500 text-white hover:scale-105 hover:shadow-[0_15px_40px_rgba(99,102,241,0.4)]"
+                : "bg-slate-400 cursor-not-allowed text-slate-200"
+                }`}
             >
               Order & Pay
             </button>
@@ -168,7 +236,7 @@ const MenuDetails = () => {
               </button>
               <button
                 onClick={handleConfirmOrder}
-                className="w-1/2 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-bold"
+                className="w-1/2 py-3 rounded-xl bg-linear-to-r from-indigo-600 to-cyan-500 text-white font-bold"
               >
                 Confirm Pay
               </button>

@@ -12,7 +12,7 @@ const Footer = () => {
             <h2 className="text-3xl font-bold text-secondary tracking-tight">
               TastyHaat
             </h2>
-            <p className="text-lg font-medium opacity-80 mt-4 leading-relaxed">
+            <p className="text-md text-justify font-medium opacity-80 mt-4 leading-relaxed">
               TastyHaat delivers fresh, delicious food with quality ingredients,
               fast service, and authentic flavors to satisfy every craving.
             </p>

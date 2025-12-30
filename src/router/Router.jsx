@@ -18,6 +18,8 @@ import UsersManagement from "../Pages/Dashboard/UsersManagement/UsersManagement"
 import AddMenu from "../Pages/Dashboard/AddMenu/AddMenu";
 import PostedMenus from "../Pages/Dashboard/PostedMenus/PostedMenus";
 import DashboradLanding from "../Pages/Dashboard/DashboradLanding/DashboradLanding";
+import PaymentsSuccess from "../Pages/Stripe/PaymentsSuccess";
+import PaymentsCancel from "../Pages/Stripe/PaymentsCancel";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +58,14 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         Component: Register,
+      },
+      {
+        path: "/payments-success",
+        Component: PaymentsSuccess,
+      },
+      {
+        path: "/payments-cancel",
+        Component: PaymentsCancel,
       },
     ],
   },

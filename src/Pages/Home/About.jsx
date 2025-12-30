@@ -10,13 +10,13 @@ const About = () => {
 
   return (
     <section className="py-24 bg-base-100 dark:bg-gray-800">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
         <div
-          className="relative w-full lg:w-1/2 rounded-3xl overflow-hidden shadow-xl"
+          className="relative w-full h-120 lg:w-1/2 rounded-3xl overflow-hidden shadow-xl"
           data-aos="fade-right"
         >
           <img
-            src="https://i.ibb.co.com/JwTX5CT3/unnamed.jpg"
+            src="https://i.ibb.co.com/G338SXnv/premium-photo-1673108852141-e8c3c22a4a22.avif"
             alt="About us"
             className="w-full h-full object-cover rounded-3xl hover:scale-105 transition-transform duration-500"
           />
@@ -50,7 +50,7 @@ const About = () => {
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              <FaLeaf className="text-green-500 text-3xl mx-auto mb-3 animate-bounce" />
+              <FaLeaf className="text-primary text-3xl mx-auto mb-3 animate-bounce" />
               <h3 className="font-semibold dark:text-white">
                 Fresh Ingredients
               </h3>
@@ -63,7 +63,7 @@ const About = () => {
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <FaClock className="text-blue-500 text-3xl mx-auto mb-3 animate-pulse" />
+              <FaClock className="text-primary text-3xl mx-auto mb-3 animate-bounce" />
               <h3 className="font-semibold dark:text-white">Fast Delivery</h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
                 Lightning-fast delivery, keeping your food hot and fresh.
@@ -74,7 +74,7 @@ const About = () => {
               data-aos="fade-up"
               data-aos-delay="300"
             >
-              <FaUtensils className="text-orange-500 text-3xl mx-auto mb-3 animate-bounce" />
+              <FaUtensils className="text-primary text-3xl mx-auto mb-3 animate-bounce" />
               <h3 className="font-semibold dark:text-white">Delicious Meals</h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
                 Expert chefs crafting mouth-watering dishes every day.

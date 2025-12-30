@@ -39,7 +39,7 @@ const TopSlider = () => {
         <Swiper
           modules={[Autoplay, Pagination]}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
+          // pagination={{ clickable: true }}
           loop={true}
           speed={900}
           className="w-full h-full"

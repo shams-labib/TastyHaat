@@ -18,7 +18,7 @@ const Contact = () => {
       id="contact"
       className="bg-base-100 dark:bg-gray-900 flex items-center justify-center px-4 py-16 sm:py-24"
     >
-      <div className="w-full max-w-6xl grid gap-8 lg:grid-cols-2">
+      <div className="w-full max-w-7xl grid gap-8 lg:grid-cols-2">
         {/* Contact Info Card */}
         <div
           className="relative p-8 sm:p-10 bg-gradient-to-br from-primary to-secondary text-white rounded-3xl shadow-lg overflow-hidden"
