@@ -26,3 +26,7 @@
   --color-base-300: #e5e7eb;
   --color-base-content: #1f2937; /* মেইন টেক্সট কালার */
 }
+
+body{
+  overflow-x: hidden;
+}

@@ -16,6 +16,8 @@ import PrivateRoute from "./PrivateRoute";
 import MenuDetails from "../Pages/MenuDetails/MenuDetails";
 import AdminDashboard from "../Pages/Dashboard/Admin/Admin";
 import UsersManagement from "../Pages/Dashboard/UsersManagement/UsersManagement";
+import PaymentsSuccess from "../Pages/Stripe/PaymentsSuccess";
+import PaymentsCancel from "../Pages/Stripe/PaymentsCancel";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +57,15 @@ export const router = createBrowserRouter([
         path: "/register",
         Component: Register,
       },
+      {
+        path: "/payments-success",
+        Component: PaymentsSuccess,
+      },
+      {
+        path: "/payments-cancel",
+        Component: PaymentsCancel,
+      },
+      
     ],
   },
   // Dashboard Layout
