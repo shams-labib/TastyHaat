@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import useAuth from "../../../Context/useAuth/useAuth";
+import useAxiosSecure from "../../../Context/useaxios/useAxiosSecure";
 
 const AddMenu = () => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
+  const axiosSecure = useAxiosSecure();
 
   const [formData, setFormData] = useState({
     name: "",

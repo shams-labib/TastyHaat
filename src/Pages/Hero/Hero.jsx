@@ -12,7 +12,7 @@ const Hero = () => {
     <div className="bg-[#FFF8F6] py-20 my-15 container mx-auto rounded-xl dark:bg-gray-900">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6">
         {/* Text Content */}
-        <div className="space-y-6 max-w-xl" data-aos="fade-right">
+        <div className="space-y-6 max-w-xl ml-5" data-aos="fade-right">
           <h1 className="text-5xl font-bold leading-[1.2]">
             <span className="text-primary">Fast, Fresh</span>
             <br />
