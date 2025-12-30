@@ -37,65 +37,7 @@ const MenuDetails = () => {
       </p>
     );
 
-  // const handleConfirmOrder = async () => {
-  //   const orderData = {
-  //     userId: user.uid,
-  //     username: user.displayName || "User",
-  //     email: user.email,
-  //     menuId: menu.id,
-  //     menuName: menu.name,
-  //     price: menu.price,
-  //     quantity: 1,
-  //     status: "pending",
-  //     createdAt: new Date().toISOString(),
-  //   };
 
-  //   try {
-  //     const res = await fetch("http://localhost:3000/orders", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(orderData),
-  //     });
-
-  //     if (res.ok) {
-  //       setShowModal(false);
-  //       navigate("/dashboard/my-orders");
-  //     } else {
-  //       alert("Order failed");
-  //     }
-  //   } catch {
-  //     alert("Something went wrong");
-  //   }
-  // };
-
-  // const handleConfirmOrder = async () => {
-  //   const paymentData = {
-  //     amount: menu.price,
-  //     userEmail: user.email,
-  //     userName: user.displayName || "User",
-  //     orderId: menu.id,
-  //     description: menu.name,
-  //   };
-
-  //   try {
-  //     const res = await fetch("http://localhost:3000/create-payment-intent", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(paymentData),
-  //     });
-
-  //     const data = await res.json();
-
-  //     if (data?.url) {
-  //       window.location.href = data.url; // Redirect to Stripe Checkout
-  //     } else {
-  //       alert("Payment initialization failed");
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //     alert("Something went wrong");
-  //   }
-  // };
 
 
 
