@@ -14,9 +14,34 @@ const MyOrders = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const handlePay = (orderId) => {
-    console.log(`Pay for Id: ${orderId}`);
+  const handlePay = async (order) => {
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/create-payment-intent`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            amount: order.price,
+            userEmail: order.email,
+            userName: order.username,
+            description: order.menuName,
+          }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (data?.url) {
+        window.location.href = data.url; // Redirect to Stripe Checkout
+      }
+    } catch (error) {
+      console.error("Payment error:", error);
+    }
   };
+
 
   const pendingOrders = orders.filter((order) => order.status === "pending");
 
@@ -104,7 +129,7 @@ const MyOrders = () => {
                     <td>
                       <button
                         className="btn btn-sm btn-primary"
-                        onClick={() => handlePay(order.menuId)}
+                        onClick={() => handlePay(order)}
                       >
                         Pay
                       </button>

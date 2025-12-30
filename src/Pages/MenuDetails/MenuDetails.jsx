@@ -37,6 +37,11 @@ const MenuDetails = () => {
       </p>
     );
 
+
+
+
+
+
   const handleConfirmOrder = async () => {
     if (!user || !menu) {
       alert("Invalid order data");
@@ -116,11 +121,10 @@ const MenuDetails = () => {
             <button
               disabled={!menu.isAvailable}
               onClick={() => setShowModal(true)}
-              className={`mt-6 px-12 py-4 rounded-2xl text-lg font-bold transition-all ${
-                menu.isAvailable
+              className={`mt-6 px-12 py-4 rounded-2xl text-lg font-bold transition-all ${menu.isAvailable
                   ? "bg-gradient-to-r from-primary to-secondary text-white hover:scale-105 hover:shadow-[0_15px_40px_rgba(99,102,241,0.4)]"
                   : "bg-primary/50 cursor-not-allowed text-slate-200"
-              }`}
+                }`}
             >
               Order & Pay
             </button>
