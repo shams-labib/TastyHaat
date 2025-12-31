@@ -45,7 +45,7 @@ const Navbar = () => {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg shadow-md transition-colors">
+    <header className="sticky top-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 shadow-md transition-colors">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Logo />
@@ -63,7 +63,7 @@ const Navbar = () => {
             {loading ? null : !user ? (
               <Link
                 to="/login"
-                className="rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-white hover:bg-primary shadow-lg hover:scale-105 transition-transform duration-300"
+                className="rounded-lg bg-[#E63946] px-5 py-2 text-sm font-semibold text-white hover:bg-[#D62839] shadow-lg hover:scale-105 transition-transform duration-300"
               >
                 Login Now
               </Link>
