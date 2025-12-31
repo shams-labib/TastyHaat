@@ -21,6 +21,7 @@ const cardAnim = {
 
 const MyProfile = () => {
   const { user, setUser } = useAuth();
+  console.log(user);
   const [editing, setEditing] = useState(false);
   const [formData, setFormData] = useState({
     displayName: user?.displayName || "",
@@ -39,11 +40,14 @@ const MyProfile = () => {
     setLoading(true);
     try {
       // Call your API to update user profile
-      const res = await fetch(`http://localhost:3000/users/${user.uid}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/users/${user.uid}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!res.ok) throw new Error("Failed to update profile");
 
@@ -70,7 +74,7 @@ const MyProfile = () => {
       >
         {/* LEFT PROFILE CARD */}
         <div className="rounded-3xl bg-base-100 dark:bg-gray-900 shadow-xl overflow-hidden">
-          <div className="flex flex-col items-center p-6 bg-gradient-to-br from-orange-500 to-red-500 text-white">
+          <div className="flex flex-col items-center p-6 bg-linear-to-br from-orange-500 to-red-500 text-white">
             <div className="avatar">
               <div className="w-24 h-24 rounded-full ring ring-white ring-offset-4 ring-offset-orange-500 shadow-lg hover:scale-105 transition-transform">
                 <img
@@ -150,7 +154,7 @@ const MyProfile = () => {
             <InfoCard
               icon={<Phone className="w-5 h-5 text-green-500" />}
               label="Phone"
-              value={formData.phoneNumber || "Not Provided"}
+              value={formData.phone || "Not Provided"}
               editable={editing}
               name="phoneNumber"
               onChange={handleChange}
@@ -175,7 +179,7 @@ const MyProfile = () => {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         {/* BIG FOOD AD */}
-        <div className="lg:col-span-2 relative rounded-3xl overflow-hidden bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white shadow-2xl">
+        <div className="lg:col-span-2 relative rounded-3xl overflow-hidden bg-linear-to-r from-orange-500 via-red-500 to-pink-500 text-white shadow-2xl">
           <div className="absolute inset-0 bg-black/30"></div>
 
           <div className="relative z-10 p-8 md:p-10 flex flex-col md:flex-row items-center">
@@ -201,7 +205,7 @@ const MyProfile = () => {
               </div>
             </div>
 
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <img
                 src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
                 alt="food"
