@@ -20,6 +20,9 @@ import PostedMenus from "../Pages/Dashboard/PostedMenus/PostedMenus";
 import DashboradLanding from "../Pages/Dashboard/DashboradLanding/DashboradLanding";
 import PaymentsSuccess from "../Pages/Stripe/PaymentsSuccess";
 import PaymentsCancel from "../Pages/Stripe/PaymentsCancel";
+import RefundPolicy from "./../Pages/Legal/RefundPolicy";
+import PrivacyPolicy from "./../Pages/Legal/PrivacyPolicy";
+import TermsConditions from "./../Pages/Legal/TermsConditions";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +69,18 @@ export const router = createBrowserRouter([
       {
         path: "/payments-cancel",
         Component: PaymentsCancel,
+      },
+      {
+        path: "/refund-policy",
+        Component: RefundPolicy,
+      },
+      {
+        path: "/privacy-policy",
+        Component: PrivacyPolicy,
+      },
+      {
+        path: "/terms-conditions",
+        Component: TermsConditions,
       },
     ],
   },

@@ -28,7 +28,7 @@ const PaymentsCancel = () => {
 
         <p className="text-base-content mb-8 leading-relaxed">
           Your payment was not completed. No charges were made. You can try
-          again whenever you’re ready.
+          again whenever you're ready.
         </p>
 
         <div className="flex gap-4">

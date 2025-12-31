@@ -36,7 +36,7 @@ const PaymentsSuccess = () => {
 
         <p className="text-base-content mb-8 leading-relaxed">
           Thank you for your order. Your payment was processed successfully.
-          You’ll be redirected to your orders shortly.
+          You'll be redirected to your orders shortly.
         </p>
 
         <button

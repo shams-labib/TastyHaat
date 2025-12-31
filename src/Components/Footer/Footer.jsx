@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-neutral text-neutral-content pt-12">
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-6 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left items-start">
+        <div className="flex flex-col md:flex-row justify-between gap-12 text-center md:text-left">
           {/* Brand Section */}
           <div className="max-w-sm mx-auto md:mx-0">
             <h2 className="text-3xl font-bold text-secondary tracking-tight">
@@ -46,6 +46,39 @@ const Footer = () => {
                   className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
                 >
                   Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="footer-title text-white opacity-100 mb-4 uppercase tracking-widest text-xs">
+              Legal
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  to="/refund-policy"
+                  className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
+                >
+                  Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/privacy-policy"
+                  className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/terms-conditions"
+                  className="text-sm opacity-70 hover:opacity-100 hover:text-secondary transition-all duration-300"
+                >
+                  Terms & Conditions
                 </Link>
               </li>
             </ul>
@@ -96,7 +129,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10 bg-neutral/60 py-6 text-center text-xs opacity-70">
+      <div className="border-t border-white/10 bg-neutral/60 py-6 text-center text-base opacity-70">
         © 2025 <span className="font-semibold text-secondary">TastyHaat</span>.
         All rights reserved.
       </div>
