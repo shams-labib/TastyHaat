@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [redirectUrl, setRedirectUrl] = useState(null);
 
   useEffect(() => {
     const apiUrl = `${import.meta.env.VITE_API_URL}/orders`;
@@ -24,7 +25,7 @@ const MyOrders = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            amount: order.price,
+            amount: Number(order.price) * Number(order.quantity || 1),
             userEmail: order.email,
             userName: order.username,
             description: order.menuName,
@@ -35,13 +36,18 @@ const MyOrders = () => {
       const data = await res.json();
 
       if (data?.url) {
-        window.location.href = data.url; // Redirect to Stripe Checkout
+        setRedirectUrl(data.url);
       }
     } catch (error) {
       console.error("Payment error:", error);
     }
   };
 
+  useEffect(() => {
+    if (redirectUrl) {
+      window.open(redirectUrl, "_self");
+    }
+  }, [redirectUrl]);
 
   const pendingOrders = orders.filter((order) => order.status === "pending");
 
