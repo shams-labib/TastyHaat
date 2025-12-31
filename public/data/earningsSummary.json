@@ -1,0 +1,34 @@
+[
+    {
+      "id": 1,
+      "service_name": "LuffyHome",
+      "created_at": "12/10/2025",
+      "category": "Home",
+      "price": 60000,
+      "earnings": 7000
+    },
+    {
+      "id": 2,
+      "service_name": "Luxury Home Decoration",
+      "created_at": "12/10/2025",
+      "category": "Home",
+      "price": 35000,
+      "earnings": 1000
+    },
+    {
+      "id": 3,
+      "service_name": "Holiday party",
+      "created_at": "12/10/2025",
+      "category": "Seminar",
+      "price": 20000,
+      "earnings": 1000
+    },
+    {
+      "id": 4,
+      "service_name": "Wedding Hall Decoration",
+      "created_at": "12/10/2025",
+      "category": "Wedding",
+      "price": 55000,
+      "earnings": 7000
+    }
+  ]
