@@ -154,7 +154,7 @@ const MyProfile = () => {
             <InfoCard
               icon={<Phone className="w-5 h-5 text-green-500" />}
               label="Phone"
-              value={formData.phone || "Not Provided"}
+              value={formData.phone || "+880170000000"}
               editable={editing}
               name="phoneNumber"
               onChange={handleChange}
@@ -162,7 +162,7 @@ const MyProfile = () => {
             <InfoCard
               icon={<MapPin className="w-5 h-5 text-blue-500" />}
               label="Location"
-              value={formData.location || "Not Provided"}
+              value={formData.location || "Dhaka, Bangladesh"}
               editable={editing}
               name="location"
               onChange={handleChange}

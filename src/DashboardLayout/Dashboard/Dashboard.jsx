@@ -85,6 +85,12 @@ const DashboardLayout = () => {
             text="Place Orders"
             onClick={() => setSidebarOpen(false)}
           />
+          <SidebarItem
+            to="/dashboard/manage-order"
+            icon={<MdFormatListBulletedAdd size={22} />}
+            text="Manage Order"
+            onClick={() => setSidebarOpen(false)}
+          />
         </div>
       </aside>
 

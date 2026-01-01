@@ -23,6 +23,7 @@ import PaymentsCancel from "../Pages/Stripe/PaymentsCancel";
 import RefundPolicy from "./../Pages/Legal/RefundPolicy";
 import PrivacyPolicy from "./../Pages/Legal/PrivacyPolicy";
 import TermsConditions from "./../Pages/Legal/TermsConditions";
+import ManageOrders from "../Pages/Dashboard/Manage Order/ManageOrder";
 
 export const router = createBrowserRouter([
   {
@@ -117,6 +118,10 @@ export const router = createBrowserRouter([
       {
         path: "users-management",
         Component: UsersManagement,
+      },
+      {
+        path: "manage-order",
+        Component: ManageOrders,
       },
     ],
   },
