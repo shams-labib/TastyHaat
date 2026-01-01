@@ -107,9 +107,9 @@ const UsersManagement = () => {
                     onChange={(e) => handleRoleChange(user._id, e.target.value)}
                     className="select select-bordered select-sm w-full max-w-xs"
                   >
-                    <option value="User">User</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Food Seller">Food Seller</option>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                    <option value="food Seller">Food Seller</option>
                   </select>
                 </td>
 
