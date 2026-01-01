@@ -131,7 +131,7 @@ const TopSellerBurgers = () => {
               {/* Order Button */}
               <motion.button
                 whileHover={{ scale: 1.1, brightness: 1.2 }}
-                className="px-6 py-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold transition-all duration-300"
+                className="px-6 py-2 rounded-full bg-primary text-white font-semibold transition-all duration-300"
               >
                 Order Now
               </motion.button>
