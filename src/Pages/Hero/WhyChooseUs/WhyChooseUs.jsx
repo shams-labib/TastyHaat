@@ -9,7 +9,7 @@ const features = [
     icon: Utensils,
     title: "Delicious Food",
     desc: "Expert chefs craft mouth-watering dishes every day.",
-    color: "#f97316",
+    color: "#fb2c36",
     animation: "float",
   },
   {
@@ -17,15 +17,15 @@ const features = [
     icon: Leaf,
     title: "Fresh Ingredients",
     desc: "100% fresh and organic ingredients guaranteed.",
-    color: "#22c55e",
-    animation: "wiggle",
+    color: "#fb2c36",
+    animation: "float",
   },
   {
     id: 3,
     icon: Truck,
     title: "Fast Delivery",
     desc: "Lightning-fast delivery while food stays hot.",
-    color: "#3b82f6",
+    color: "#fb2c36",
     animation: "float",
   },
   {
@@ -33,8 +33,8 @@ const features = [
     icon: Star,
     title: "Top Rated",
     desc: "Rated 5 stars by thousands of food lovers.",
-    color: "#facc15",
-    animation: "wiggle",
+    color: "#fb2c36",
+    animation: "float",
   },
 ];
 
