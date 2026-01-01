@@ -1,4 +1,5 @@
-import React from "react";
+// AdminDashboard.jsx
+import React, { useState, useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -12,25 +13,108 @@ import {
   BarChart,
   Bar,
 } from "recharts";
-import { LucideUser, LucideShoppingCart, LucideDollarSign } from "lucide-react";
-
-// Demo Data
-const summaryData = {
-  revenue: 12500,
-  members: 150,
-  orders: 320,
-};
-
-const chartData = [
-  { name: "Jan", orders: 30, revenue: 400, members: 10 },
-  { name: "Feb", orders: 45, revenue: 600, members: 20 },
-  { name: "Mar", orders: 60, revenue: 800, members: 30 },
-  { name: "Apr", orders: 80, revenue: 1000, members: 40 },
-  { name: "May", orders: 90, revenue: 1200, members: 50 },
-  { name: "Jun", orders: 100, revenue: 1400, members: 60 },
-];
+import { LucideUser, LucideShoppingCart, LucideMenu } from "lucide-react";
+import useAxiosSecure from "../../../Context/useaxios/useAxiosSecure";
 
 const AdminDashboard = () => {
+  const axiosSecure = useAxiosSecure();
+
+  // State
+  const [summary, setSummary] = useState({
+    members: 0,
+    orders: 0,
+    menus: 0,
+  });
+  const [chartData, setChartData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch dynamic data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+
+        // Fetch all data from server
+        const [usersRes, ordersRes, menusRes] = await Promise.all([
+          axiosSecure.get("/users"),
+          axiosSecure.get("/orders"),
+          axiosSecure.get("/menus"),
+        ]);
+
+        const users = usersRes.data;
+        const orders = ordersRes.data;
+        const menus = menusRes.data;
+
+        // Set summary
+        setSummary({
+          members: users.length,
+          orders: orders.length,
+          menus: menus.length,
+        });
+
+        // Generate chartData (last 6 months)
+        const monthNames = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        const now = new Date();
+        const months = Array.from({ length: 6 }, (_, i) => {
+          const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+          return {
+            month: monthNames[d.getMonth()],
+            orders: 0,
+            members: 0,
+            menus: 0,
+          };
+        }).reverse();
+
+        // Populate chart data
+        months.forEach((m) => {
+          orders.forEach((o) => {
+            const orderMonth = new Date(o.createdAt).getMonth();
+            if (monthNames[orderMonth] === m.month) m.orders += 1;
+          });
+          users.forEach((u) => {
+            const userMonth = new Date(u.createdAt).getMonth();
+            if (monthNames[userMonth] === m.month) m.members += 1;
+          });
+          menus.forEach((menu) => {
+            const menuMonth = new Date(menu.createdAt).getMonth();
+            if (monthNames[menuMonth] === m.month) m.menus += 1;
+          });
+        });
+
+        setChartData(months);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch admin data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [axiosSecure]);
+
+  if (loading)
+    return (
+      <p className="p-6 text-gray-900 dark:text-gray-100">
+        Loading dashboard...
+      </p>
+    );
+  if (error) return <p className="p-6 text-red-500">{error}</p>;
+
   return (
     <div className="p-6 bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300">
       {/* Header */}
@@ -43,21 +127,11 @@ const AdminDashboard = () => {
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition flex items-center space-x-4">
-          <LucideDollarSign className="w-10 h-10 text-green-500" />
-          <div>
-            <p className="text-gray-500 dark:text-gray-300">Total Revenue</p>
-            <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-              ${summaryData.revenue}
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition flex items-center space-x-4">
           <LucideUser className="w-10 h-10 text-blue-500" />
           <div>
             <p className="text-gray-500 dark:text-gray-300">Total Members</p>
             <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-              {summaryData.members}
+              {summary.members}
             </p>
           </div>
         </div>
@@ -67,7 +141,17 @@ const AdminDashboard = () => {
           <div>
             <p className="text-gray-500 dark:text-gray-300">Total Orders</p>
             <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-              {summaryData.orders}
+              {summary.orders}
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition flex items-center space-x-4">
+          <LucideMenu className="w-10 h-10 text-yellow-500" />
+          <div>
+            <p className="text-gray-500 dark:text-gray-300">Total Menus</p>
+            <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              {summary.menus}
             </p>
           </div>
         </div>
@@ -75,10 +159,10 @@ const AdminDashboard = () => {
 
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Orders & Revenue Line Chart */}
+        {/* Orders Line Chart */}
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
           <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-            Orders & Revenue Trend
+            Orders Trend
           </h2>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
@@ -88,25 +172,18 @@ const AdminDashboard = () => {
                 className="dark:stroke-gray-700"
               />
               <XAxis
-                dataKey="name"
+                dataKey="month"
                 stroke="#333"
                 className="dark:stroke-gray-100"
               />
               <YAxis stroke="#333" className="dark:stroke-gray-100" />
               <Tooltip
                 contentStyle={{ backgroundColor: "#fff", color: "#333" }}
-                wrapperStyle={{ backgroundColor: "transparent" }}
               />
               <Line
                 type="monotone"
                 dataKey="orders"
                 stroke="#7c3aed"
-                strokeWidth={2}
-              />
-              <Line
-                type="monotone"
-                dataKey="revenue"
-                stroke="#10b981"
                 strokeWidth={2}
               />
             </LineChart>
@@ -127,7 +204,7 @@ const AdminDashboard = () => {
                 </linearGradient>
               </defs>
               <XAxis
-                dataKey="name"
+                dataKey="month"
                 stroke="#333"
                 className="dark:stroke-gray-100"
               />
@@ -151,10 +228,10 @@ const AdminDashboard = () => {
           </ResponsiveContainer>
         </div>
 
-        {/* Orders vs Revenue Bar Chart */}
+        {/* Orders vs Members Bar Chart */}
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow lg:col-span-2">
           <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-            Orders vs Revenue
+            Orders vs Members
           </h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={chartData}>
@@ -164,7 +241,7 @@ const AdminDashboard = () => {
                 className="dark:stroke-gray-700"
               />
               <XAxis
-                dataKey="name"
+                dataKey="month"
                 stroke="#333"
                 className="dark:stroke-gray-100"
               />
@@ -173,7 +250,7 @@ const AdminDashboard = () => {
                 contentStyle={{ backgroundColor: "#fff", color: "#333" }}
               />
               <Bar dataKey="orders" fill="#7c3aed" />
-              <Bar dataKey="revenue" fill="#10b981" />
+              <Bar dataKey="members" fill="#3b82f6" />
             </BarChart>
           </ResponsiveContainer>
         </div>

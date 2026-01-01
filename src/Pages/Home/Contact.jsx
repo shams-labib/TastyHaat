@@ -1,35 +1,33 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
   FaClock,
 } from "react-icons/fa";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { motion } from "framer-motion";
 
 const Contact = () => {
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
-
   return (
     <div
       id="contact"
-      className="bg-base-100 dark:bg-gray-900 flex items-center justify-center px-4 py-16 sm:py-24"
+      className="bg-gray-50 dark:bg-gray-800 flex items-center justify-center px-4 py-16 sm:py-24"
     >
       <div className="w-full max-w-7xl grid gap-8 lg:grid-cols-2">
         {/* Contact Info Card */}
-        <div
-          className="relative p-8 sm:p-10 bg-gradient-to-br from-primary to-secondary text-white rounded-3xl shadow-lg overflow-hidden"
-          data-aos="fade-right"
+        <motion.div
+          className="relative p-8 sm:p-10 bg-gray-800/80 dark:bg-gray-700/80 text-white rounded-3xl shadow-2xl overflow-hidden"
+          initial={{ x: -50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
         >
-          {/* Background Circles */}
-          <div className="absolute w-32 h-32 bg-white/10 rounded-full -top-12 -left-12 animate-bounce-slow"></div>
-          <div className="absolute w-32 h-32 bg-white/10 rounded-full -bottom-12 -right-12 animate-bounce-slow-reverse"></div>
+          {/* Soft background circles */}
+          <div className="absolute w-28 h-28 bg-white/10 rounded-full -top-10 -left-10 animate-bounce-slow"></div>
+          <div className="absolute w-28 h-28 bg-white/10 rounded-full -bottom-10 -right-10 animate-bounce-slow-reverse"></div>
 
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Let's Talk</h2>
-          <p className="mb-6 sm:mb-8 text-white/80 leading-relaxed">
+          <p className="mb-6 sm:mb-8 text-white/70 leading-relaxed">
             Questions? Feedback? Or just want to say hi? Reach out and we'll get
             back to you in no time.
           </p>
@@ -53,18 +51,21 @@ const Contact = () => {
             <h3 className="text-xl sm:text-2xl font-semibold mb-2 flex items-center gap-2">
               <FaClock /> Opening Hours
             </h3>
-            <ul className="space-y-1 text-sm sm:text-base">
+            <ul className="space-y-1 text-sm sm:text-base text-white/80">
               <li>Monday - Friday: 10:00 AM - 10:00 PM</li>
               <li>Saturday: 10:00 AM - 11:00 PM</li>
               <li>Sunday: Closed</li>
             </ul>
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact Form Card */}
-        <div
-          className="relative p-8 sm:p-10 bg-white/90 dark:bg-gray-800/80 backdrop-blur-md rounded-3xl shadow-lg"
-          data-aos="fade-left"
+        <motion.div
+          className="relative p-8 sm:p-10 bg-white dark:bg-gray-800/80 backdrop-blur-md rounded-3xl shadow-2xl"
+          initial={{ x: 50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-white">
             Send a Message
@@ -73,53 +74,42 @@ const Contact = () => {
             <input
               type="text"
               placeholder="Your Name"
-              className="w-full p-3 sm:p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-white/60 dark:bg-gray-700/60 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary outline-none transition"
+              className="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-400 outline-none transition"
             />
             <input
               type="email"
               placeholder="Your Email"
-              className="w-full p-3 sm:p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-white/60 dark:bg-gray-700/60 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary outline-none transition"
+              className="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-400 outline-none transition"
             />
             <textarea
               placeholder="Your Message"
-              className="w-full p-3 sm:p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-white/60 dark:bg-gray-700/60 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary outline-none h-32 resize-none transition"
+              className="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-400 outline-none h-32 resize-none transition"
             ></textarea>
-            <button
+            <motion.button
               type="submit"
-              className="w-full py-3 sm:py-4 rounded-2xl bg-primary text-primary-content font-bold text-lg hover:bg-secondary transition-colors duration-300 shadow-md hover:shadow-lg"
+              className="w-full py-3 sm:py-4 rounded-2xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold text-lg shadow-md hover:shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Send Message
-            </button>
+            </motion.button>
           </form>
-        </div>
+        </motion.div>
       </div>
 
       {/* Tailwind Custom Animations */}
       <style>{`
         @keyframes bounce-slow {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(15px);
-          }
+          0%,100% { transform: translateY(0); }
+          50% { transform: translateY(12px); }
         }
-        .animate-bounce-slow {
-          animation: bounce-slow 4s ease-in-out infinite;
-        }
+        .animate-bounce-slow { animation: bounce-slow 4s ease-in-out infinite; }
+
         @keyframes bounce-slow-reverse {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-15px);
-          }
+          0%,100% { transform: translateY(0); }
+          50% { transform: translateY(-12px); }
         }
-        .animate-bounce-slow-reverse {
-          animation: bounce-slow-reverse 5s ease-in-out infinite;
-        }
+        .animate-bounce-slow-reverse { animation: bounce-slow-reverse 5s ease-in-out infinite; }
       `}</style>
     </div>
   );

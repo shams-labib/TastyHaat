@@ -10,7 +10,7 @@ const About = () => {
 
   return (
     <section className="py-24 bg-base-100 dark:bg-gray-800">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
         <div
           className="relative w-full h-120 lg:w-1/2 rounded-3xl overflow-hidden shadow-xl"
           data-aos="fade-right"
