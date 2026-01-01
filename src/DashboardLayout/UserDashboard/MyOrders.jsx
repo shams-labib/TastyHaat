@@ -56,7 +56,7 @@ const MyOrders = () => {
   }
 
   return (
-    <div className="p-4 sm:p-6 min-h-screen">
+    <div className="p-4 sm:p-6 min-h-screen text-gray-800 dark:text-base-200">
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ const MyOrders = () => {
                 key={order._id || index}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="card bg-base-100 shadow-md"
+                className="card bg-base-100 shadow-md border border-red-600"
               >
                 <div className="card-body p-4 space-y-2">
                   <div className="flex justify-between">
@@ -107,9 +107,9 @@ const MyOrders = () => {
 
           <div className="overflow-x-auto hidden md:block">
             {" "}
-            <table className="table table-zebra w-full">
+            <table className="table text-center border w-full">
               <thead>
-                <tr>
+                <tr className="text-gray-800 dark:text-base-200">
                   <th>#</th>
                   <th>Name</th>
                   <th>Price</th>
@@ -124,6 +124,7 @@ const MyOrders = () => {
                     key={order._id || index}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
+                    className="border-b hover:bg-gray-100 dark:hover:bg-gray-800"
                   >
                     <th>{index + 1}</th>
                     <td>{order.menuName}</td>

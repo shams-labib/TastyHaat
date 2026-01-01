@@ -85,14 +85,14 @@ const Navbar = () => {
                 {userMenuOpen && (
                   <div className="absolute right-0 mt-3 w-48 rounded-xl bg-white dark:bg-gray-900 shadow-xl">
                     <div className="px-4 py-3 border-b dark:border-gray-800">
-                      <p className="text-sm font-semibold">
+                      <p className="text-sm text-gray-900 dark:text-base-200 font-semibold">
                         {user?.displayName || "User"}
                       </p>
                     </div>
 
                     <Link
                       to="/dashboard/profile"
-                      className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
+                      className="block px-4 py-2 text-gray-900 dark:text-base-200 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
                     >
                       Profile
                     </Link>

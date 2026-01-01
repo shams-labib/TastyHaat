@@ -27,11 +27,11 @@ const DashboardLanding = () => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-10"
       >
-        <h1 className="text-3xl md:text-4xl font-bold">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-base-200">
           Welcome back,{" "}
           <span className="text-primary">{user?.displayName || "User"}</span> 👋
         </h1>
-        <p className="text-base-content/60 mt-2">
+        <p className="mt-2 text-gray-900 dark:text-base-200">
           Manage your menus, track activity, and grow your business.
         </p>
       </motion.div>
