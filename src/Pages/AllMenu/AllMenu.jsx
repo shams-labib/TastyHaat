@@ -84,22 +84,45 @@ const AllMenu = () => {
               placeholder="Search menu..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className=" w-full px-4 py-3 rounded-l-lg bg-base-100 border border-base-300 text-base-content placeholder:text-base-content/60 outline-none focus:outline-none focus:border-primary transition-all"
+              className="
+        w-full px-4 py-3 rounded-l-lg
+        bg-base-100 dark:bg-gray-800
+        border border-base-300 dark:border-gray-700
+        text-base-content dark:text-gray-100
+        placeholder:text-base-content/60 dark:placeholder:text-gray-400
+        outline-none focus:outline-none
+        focus:border-primary dark:focus:border-primary
+        transition-all
+      "
             />
             <button
               type="submit"
-              className="px-6 py-3 bg-primary text-white rounded-r-lg font-semibold hover:bg-secondary transition"
+              className="
+        px-6 py-3 rounded-r-lg font-semibold
+        bg-primary text-white
+        hover:bg-secondary
+        transition
+      "
             >
               Search
             </button>
           </div>
+
           <select
             value={sortOrder}
             onChange={(e) => {
               setSortOrder(e.target.value);
               setCurrentPage(1);
             }}
-            className="w-full md:w-56 px-4 py-3 rounded-lg bg-base-100 dark:bg-gray-800 border border-base-300 text-base-content outline-none focus:outline-none focus:border-primary transition-all"
+            className="
+      w-full md:w-56 px-4 py-3 rounded-lg
+      bg-base-100 dark:bg-gray-800
+      border border-base-300 dark:border-gray-700
+      text-base-content dark:text-gray-100
+      outline-none focus:outline-none
+      focus:border-primary dark:focus:border-primary
+      transition-all
+    "
           >
             <option value="">Sort by Price</option>
             <option value="low">Low → High</option>
