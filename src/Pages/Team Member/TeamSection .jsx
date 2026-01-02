@@ -16,7 +16,7 @@ const teamMembers = [
     role: "Project Lead",
     img: "https://i.ibb.co.com/Mytr8cvn/486358168-1662894851009150-258168444497357135-n.jpg",
     bio: "Shams is a full-stack MERN developer coordinating all sections, ensuring code consistency, and optimizing workflows.",
-    skills: ["React", "Node.js", "MongoDB", "Express", "TailwindCSS"],
+    skills: ["React.js", "Node.js", "MongoDB", "Express", "TailwindCSS"],
     github: "#",
     linkedin: "#",
     college: "Rangpur Ideal Institute Of Technology",
@@ -26,50 +26,50 @@ const teamMembers = [
     role: "Main Member",
     img: "https://i.ibb.co.com/Dn8Qwks/108589076.jpg",
     bio: "Front-end expert creating modern, responsive Hero sections with interactive elements using React and TailwindCSS.",
-    skills: ["React", "TailwindCSS", "Swiper", "Figma", "UI/UX"],
+    skills: ["MongoDB", "Express.js", "React.js", "Node.js", "UI/UX"],
     github: "#",
     linkedin: "#",
-    college: "ABC College",
+    college: "Govt. BL College, Khulna",
   },
   {
     name: "Shafin Ahmed",
     role: "Main Member",
     img: "https://i.ibb.co/HpR24GbD/199338290.jpg",
     bio: "Creates dynamic dashboards using React and chart libraries.",
-    skills: ["React", "Recharts", "TailwindCSS", "Framer Motion"],
+    skills: ["React.js", "Recharts", "TailwindCSS", "Framer Motion"],
     github: "#",
     linkedin: "#",
-    college: "Uttara University",
+    college: "Dhaka College, Dhaka",
   },
   {
     name: "Aminur Rahman",
-    role: "Close Member",
+    role: "Member",
     img: "https://i.ibb.co.com/5mvNPjX/188297559.jpg",
     bio: "Expert in footer design, accessibility, and responsive layouts for a consistent user experience.",
-    skills: ["React", "TailwindCSS", "UI/UX", "Responsive Design"],
+    skills: ["React", "TailwindCSS", "UI/UX", "Swiper"],
     github: "#",
     linkedin: "#",
-    college: "ABC College",
+    college: "Govt. Satkhira College",
   },
   {
     name: "Aftab",
-    role: "Core Member",
+    role: "Member",
     img: "https://i.ibb.co/6D9mY7g/man1.jpg",
     bio: "Develops seller dashboards with CRUD operations and real-time updates, specialized in MERN stack.",
     skills: ["React", "Node.js", "MongoDB", "Express", "TailwindCSS"],
     github: "#",
     linkedin: "#",
-    college: "ABC College",
+    college: "Barishal Govt. College",
   },
   {
     name: "Taslima Akter",
-    role: "Core Member",
+    role: "Member",
     img: "https://i.ibb.co.com/9myP8CYW/208586980.jpg",
     bio: "Designs landing pages that convert with clean layouts, responsive design, and subtle animations.",
     skills: ["React", "Swiper", "Framer Motion", "TailwindCSS", "UI/UX"],
     github: "#",
     linkedin: "#",
-    college: "ABC University",
+    college: "Dinajpur Govt. College",
   },
 ];
 
@@ -144,7 +144,7 @@ const TeamSection = () => {
               className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-800/80 dark:to-gray-700/70 rounded-3xl shadow-xl p-6 flex flex-col items-center text-center transition-all"
             >
               {/* Image */}
-              <div className="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-indigo-300 dark:border-purple-600 shadow-lg">
+              <div className="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-primary shadow-lg">
                 <img
                   src={member.img}
                   alt={member.name}
@@ -156,9 +156,7 @@ const TeamSection = () => {
                 {member.name}
               </h3>
 
-              <p className="text-indigo-600 dark:text-purple-400 font-semibold mb-2">
-                {member.role}
-              </p>
+              <p className="text-primary font-semibold mb-2">{member.role}</p>
 
               <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
                 {member.bio}
@@ -174,7 +172,7 @@ const TeamSection = () => {
                   <motion.span
                     whileHover={{ scale: 1.1 }}
                     key={idx}
-                    className="bg-indigo-100 dark:bg-purple-700/60 text-indigo-800 dark:text-purple-200 px-3 py-1 rounded-full text-xs flex items-center gap-1"
+                    className="bg-primary/10  text-primary dark:text-purple-200 px-3 py-1 rounded-full text-xs flex items-center gap-1"
                   >
                     <Code size={14} /> {skill}
                   </motion.span>

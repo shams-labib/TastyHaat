@@ -8,6 +8,7 @@ import {
 } from "react-icons/md";
 import { IoMdAddCircle } from "react-icons/io";
 import { IoRestaurant } from "react-icons/io5";
+import { TbReorder } from "react-icons/tb";
 import { NavLink, Outlet } from "react-router";
 import { Home, Menu, X } from "lucide-react";
 
@@ -58,7 +59,7 @@ const DashboardLayout = () => {
           <SidebarItem
             to="/dashboard/my-menus"
             icon={<IoRestaurant size={22} />}
-            text="Posted Menu"
+            text="Posted Menus"
             onClick={() => setSidebarOpen(false)}
           />
           <SidebarItem
@@ -86,9 +87,9 @@ const DashboardLayout = () => {
             onClick={() => setSidebarOpen(false)}
           />
           <SidebarItem
-            to="/dashboard/manage-order"
-            icon={<MdFormatListBulletedAdd size={22} />}
-            text="Manage Order"
+            to="/dashboard/manage-orders"
+            icon={<TbReorder size={22} />}
+            text="Manage Orders"
             onClick={() => setSidebarOpen(false)}
           />
         </div>
@@ -120,7 +121,7 @@ const SidebarItem = ({ icon, text, to, onClick }) => (
       `flex items-center gap-3 p-3 rounded-lg transition-all duration-200
       ${
         isActive
-          ? "bg-primary/10 dark:bg-gray-900 text-primary dark:text-blue-400 font-semibold"
+          ? "bg-primary/10 dark:bg-gray-900 text-primary font-semibold"
           : "text-gray-700 dark:text-gray-200 hover:bg-primary/10 hover:text-primary dark:hover:bg-gray-900"
       }`
     }
