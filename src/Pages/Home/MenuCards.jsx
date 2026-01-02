@@ -21,8 +21,8 @@ const MenuCards = () => {
   }, [menus]);
 
   return (
-    <div id="menu" className="max-w-7xl mx-auto px-4">
-      <div className="bg-base-100 dark:bg-gray-800 py-16 px-5">
+    <div id="menu" className="container mx-auto px-4">
+      <div className="bg-base-100 dark:bg-gray-800 py-16 md:px-5">
         <h1
           data-aos="fade-up"
           className="text-4xl dark:text-white font-bold text-center mb-12 relative w-full"

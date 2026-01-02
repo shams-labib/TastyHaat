@@ -9,8 +9,8 @@ const About = () => {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 bg-base-100 dark:bg-gray-800 py-16">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-12 px-4">
+    <section className="container mx-auto px-4 bg-base-100 dark:bg-gray-800 py-16">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:px-4">
         <div
           className="relative w-full h-120 lg:w-1/2 rounded-3xl overflow-hidden shadow-xl"
           data-aos="fade-right"

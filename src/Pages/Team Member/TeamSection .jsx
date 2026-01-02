@@ -9,14 +9,13 @@ import "aos/dist/aos.css";
 import { Code, Star, Settings, Users } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-// Team members data
 const teamMembers = [
   {
     name: "Shams all Labib",
     role: "Project Lead",
     img: "https://i.ibb.co.com/Mytr8cvn/486358168-1662894851009150-258168444497357135-n.jpg",
     bio: "Shams is a full-stack MERN developer coordinating all sections, ensuring code consistency, and optimizing workflows.",
-    skills: ["React.js", "Node.js", "MongoDB", "Express", "TailwindCSS"],
+    skills: ["React.js", "Node.js", "MongoDB", "Express"],
     github: "#",
     linkedin: "#",
     college: "Rangpur Ideal Institute Of Technology",
@@ -26,7 +25,7 @@ const teamMembers = [
     role: "Main Member",
     img: "https://i.ibb.co.com/Dn8Qwks/108589076.jpg",
     bio: "Front-end expert creating modern, responsive Hero sections with interactive elements using React and TailwindCSS.",
-    skills: ["MongoDB", "Express.js", "React.js", "Node.js", "UI/UX"],
+    skills: ["React.js", "Express.js", "Node.js", "UI/UX"],
     github: "#",
     linkedin: "#",
     college: "Govt. BL College, Khulna",
@@ -35,7 +34,7 @@ const teamMembers = [
     name: "Shafin Ahmed",
     role: "Main Member",
     img: "https://i.ibb.co/HpR24GbD/199338290.jpg",
-    bio: "Creates dynamic dashboards using React and chart libraries.",
+    bio: "Creates dynamic dashboards using React and chart libraries. Stripe Integration",
     skills: ["React.js", "Recharts", "TailwindCSS", "Framer Motion"],
     github: "#",
     linkedin: "#",
@@ -56,7 +55,7 @@ const teamMembers = [
     role: "Member",
     img: "https://i.ibb.co/6D9mY7g/man1.jpg",
     bio: "Develops seller dashboards with CRUD operations and real-time updates, specialized in MERN stack.",
-    skills: ["React", "Node.js", "MongoDB", "Express", "TailwindCSS"],
+    skills: ["React", "Node.js", "Express", "TailwindCSS"],
     github: "#",
     linkedin: "#",
     college: "Barishal Govt. College",
@@ -66,7 +65,7 @@ const teamMembers = [
     role: "Member",
     img: "https://i.ibb.co.com/9myP8CYW/208586980.jpg",
     bio: "Designs landing pages that convert with clean layouts, responsive design, and subtle animations.",
-    skills: ["React", "Swiper", "Framer Motion", "TailwindCSS", "UI/UX"],
+    skills: ["React", "Swiper", "Framer Motion", "TailwindCSS"],
     github: "#",
     linkedin: "#",
     college: "Dinajpur Govt. College",
@@ -89,7 +88,7 @@ const TeamSection = () => {
   }, []);
 
   return (
-    <div className="bg-gray-50 container mx-auto dark:bg-gray-800 py-20 px-4 relative">
+    <div className="bg-gray-50 container mx-auto dark:bg-gray-800 py-20 px-4 md:px-8 relative">
       {/* Section Heading with animated icons */}
       <div className="relative text-center mb-14">
         <motion.div
@@ -141,7 +140,7 @@ const TeamSection = () => {
             <motion.div
               data-aos="fade-up"
               whileHover={{ y: -8, scale: 1.03 }}
-              className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-800/80 dark:to-gray-700/70 rounded-3xl shadow-xl p-6 flex flex-col items-center text-center transition-all"
+              className="bg-linear-to-br from-indigo-50 to-purple-50 dark:from-gray-800/80 dark:to-gray-700/70 rounded-3xl shadow-xl p-6 flex flex-col items-center text-center transition-all"
             >
               {/* Image */}
               <div className="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-primary shadow-lg">
@@ -156,9 +155,7 @@ const TeamSection = () => {
                 {member.name}
               </h3>
 
-              <p className="text-primary font-semibold mb-2">
-                {member.role}
-              </p>
+              <p className="text-primary font-semibold mb-2">{member.role}</p>
 
               <p className="text-gray-600 line-clamp-2 dark:text-gray-300 text-sm mb-3">
                 {member.bio}
