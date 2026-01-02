@@ -1,15 +1,44 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router";
 
 const PaymentsSuccess = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [payment, setPayment] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  const sessionId = searchParams.get("session_id");
+
+  useEffect(() => {
+    if (!sessionId) {
+      setLoading(false);
+      return;
+    }
+
+    // Fetch payment details from backend
+    fetch(`${import.meta.env.VITE_API_URL}/payments/session/${sessionId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setPayment(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch payment:", err);
+        setLoading(false);
+      });
+  }, [sessionId]);
+
+  // Redirect after 4 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/dashboard/my-orders");
     }, 4000);
     return () => clearTimeout(timer);
   }, [navigate]);
+
+  if (loading) {
+    return <p className="text-center mt-6">Loading payment info...</p>;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-100 px-4">
@@ -22,22 +51,23 @@ const PaymentsSuccess = () => {
             strokeWidth="2"
             viewBox="0 0 24 24"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
 
         <h1 className="text-3xl font-extrabold text-primary mb-3">
-          Payment Successful
+          Payment {payment?.status === "paid" || payment?.status === "succeeded" ? "Successful" : "Failed"}
         </h1>
 
-        <p className="text-base-content mb-8 leading-relaxed">
-          Thank you for your order. Your payment was processed successfully.
-          You'll be redirected to your orders shortly.
-        </p>
+        {payment ? (
+          <p className="text-base-content mb-8 leading-relaxed">
+            {payment.userEmail && `Email: ${payment.userEmail}`} <br />
+            {payment.amount && `Amount: $${payment.amount}`} <br />
+            Status: {payment.status}
+          </p>
+        ) : (
+          <p className="text-base-content mb-8 leading-relaxed">Payment info not available.</p>
+        )}
 
         <button
           onClick={() => navigate("/dashboard/my-orders")}

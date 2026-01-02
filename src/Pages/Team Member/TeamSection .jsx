@@ -39,7 +39,7 @@ const teamMembers = [
     skills: ["React.js", "Recharts", "TailwindCSS", "Framer Motion"],
     github: "#",
     linkedin: "#",
-    college: "Dhaka College, Dhaka",
+    college: "Daffodil International University",
   },
   {
     name: "Aminur Rahman",
@@ -94,14 +94,14 @@ const TeamSection = () => {
       <div className="relative text-center mb-14">
         <motion.div
           {...floatAnim}
-          className="absolute left-1/2 -translate-x-1/2 -top-10 text-indigo-500"
+          className="absolute left-1/2 -translate-x-1/2 -top-10 text-primary"
         >
           <Users size={34} />
         </motion.div>
 
         <motion.div
           {...floatAnim}
-          className="absolute left-[30%] top-0 text-yellow-400"
+          className="absolute left-[30%] top-0 text-primary"
         >
           <Star size={26} />
         </motion.div>
@@ -109,7 +109,7 @@ const TeamSection = () => {
         <motion.div
           animate={{ rotate: [0, 15, -15, 0] }}
           transition={{ duration: 3, repeat: Infinity }}
-          className="absolute right-[30%] top-0 text-green-500"
+          className="absolute right-[30%] top-0 text-primary"
         >
           <Settings size={26} />
         </motion.div>
@@ -156,9 +156,11 @@ const TeamSection = () => {
                 {member.name}
               </h3>
 
-              <p className="text-primary font-semibold mb-2">{member.role}</p>
+              <p className="text-primary font-semibold mb-2">
+                {member.role}
+              </p>
 
-              <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+              <p className="text-gray-600 line-clamp-2 dark:text-gray-300 text-sm mb-3">
                 {member.bio}
               </p>
 
@@ -172,7 +174,7 @@ const TeamSection = () => {
                   <motion.span
                     whileHover={{ scale: 1.1 }}
                     key={idx}
-                    className="bg-primary/10  text-primary dark:text-purple-200 px-3 py-1 rounded-full text-xs flex items-center gap-1"
+                    className="bg-primary/20 text-black dark:text-white px-3 py-1 rounded-full text-xs flex items-center gap-1"
                   >
                     <Code size={14} /> {skill}
                   </motion.span>
