@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import { Link } from "react-router";
-import { ShoppingCart, Star, Heart } from "lucide-react"; // Lucide icons
+import { ShoppingCart, Star, Heart } from "lucide-react";
 import { Coffee, Pizza } from "lucide-react";
 
 const MenuCards = () => {
@@ -21,7 +21,7 @@ const MenuCards = () => {
   }, [menus]);
 
   return (
-    <div id="menu" className="container mx-auto">
+    <div id="menu" className="max-w-7xl mx-auto px-4">
       <div className="bg-base-100 dark:bg-gray-800 py-16 px-5">
         <h1
           data-aos="fade-up"
@@ -101,7 +101,7 @@ const MenuCards = () => {
                 </motion.div>
               </div>
 
-              <div className="p-5 flex flex-col justify-between h-[220px]">
+              <div className="p-5 flex flex-col justify-between h-55">
                 <div>
                   <h2 className="text-lg font-semibold mb-2 dark:text-white">
                     {menu.name}

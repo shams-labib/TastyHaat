@@ -155,7 +155,7 @@ const PostedMenus = () => {
                   </div>
 
                   <p className="text-sm">
-                    <strong>Price:</strong> ৳{menu.price}
+                    <strong>Price:</strong> ${menu.price}
                   </p>
 
                   <p className="text-sm">
@@ -207,7 +207,7 @@ const PostedMenus = () => {
                   >
                     <th>{index + 1}</th>
                     <td>{menu.name}</td>
-                    <td>৳{menu.price}</td>
+                    <td>${menu.price}</td>
                     <td>
                       <span
                         className={`badge ${
