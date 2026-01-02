@@ -105,11 +105,11 @@ const MyOrders = () => {
             ))}
           </div>
 
-          <div className="overflow-x-auto hidden md:block">
+          <div className="idden md:block overflow-x-auto rounded-xl shadow">
             {" "}
-            <table className="table text-center border w-full">
-              <thead>
-                <tr className="text-gray-800 dark:text-base-200">
+            <table className="table w-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+              <thead className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+                <tr>
                   <th>#</th>
                   <th>Name</th>
                   <th>Price</th>
@@ -124,7 +124,7 @@ const MyOrders = () => {
                     key={order._id || index}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="border-b hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
                     <th>{index + 1}</th>
                     <td>{order.menuName}</td>

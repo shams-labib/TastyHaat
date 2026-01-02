@@ -50,9 +50,7 @@ const topBurgers = [
 const TopSellerBurgers = () => {
   return (
     <div className="py-16 px-4 relative">
-      {/* Heading with animated icons */}
       <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-900 dark:text-white relative w-full">
-        {/* Floating Star */}
         <motion.div
           className="absolute -top-6 left-1/2 -translate-x-1/2 text-primary"
           animate={{ y: [0, -10, 0] }}
@@ -61,7 +59,6 @@ const TopSellerBurgers = () => {
           <Star size={28} />
         </motion.div>
 
-        {/* Floating Coffee */}
         <motion.div
           className="absolute -top-4 left-1/3 text-primary"
           animate={{ y: [0, 8, 0] }}
@@ -70,7 +67,6 @@ const TopSellerBurgers = () => {
           <Coffee size={28} />
         </motion.div>
 
-        {/* Floating Pizza */}
         <motion.div
           className="absolute -bottom-6 right-1/3 text-primary"
           animate={{ rotate: [0, 15, 0], scale: [1, 1.2, 1] }}
@@ -84,7 +80,6 @@ const TopSellerBurgers = () => {
         </span>
       </h2>
 
-      {/* Swiper */}
       <Swiper
         modules={[Pagination, Autoplay]}
         autoplay={{ delay: 3500, disableOnInteraction: false }}
@@ -118,12 +113,10 @@ const TopSellerBurgers = () => {
                 />
               </div>
 
-              {/* Burger Name */}
               <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
                 {burger.name}
               </h3>
 
-              {/* Burger Rating */}
               <div className="flex items-center gap-1 mb-3 justify-center">
                 {[...Array(5)].map((_, idx) => (
                   <FaStar key={idx} className="text-yellow-400" />
@@ -135,15 +128,13 @@ const TopSellerBurgers = () => {
                 {burger.desc}
               </p>
 
-              {/* Price */}
-              <p className="text-lg font-bold text-indigo-600 dark:text-purple-400 mb-4">
+              <p className="text-lg font-bold text-primary mb-4">
                 {burger.price}
               </p>
 
-              {/* Order Button */}
               <motion.button
                 whileHover={{ scale: 1.1, brightness: 1.2 }}
-                className="px-6 py-2 rounded-full bg-primary text-white font-semibold transition-all duration-300"
+                className="px-6 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold transition-all duration-300"
               >
                 Order Now
               </motion.button>
@@ -152,7 +143,6 @@ const TopSellerBurgers = () => {
         ))}
       </Swiper>
 
-      {/* Pagination outside */}
       <div className="custom-pagination mt-8 flex justify-center"></div>
     </div>
   );

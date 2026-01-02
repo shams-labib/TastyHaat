@@ -1,6 +1,7 @@
 // ManageOrders.jsx
 import React, { useState, useEffect } from "react";
 import useAxiosSecure from "../../../Context/useaxios/useAxiosSecure";
+import { motion } from "framer-motion";
 
 const ManageOrders = () => {
   const axiosSecure = useAxiosSecure();
@@ -10,7 +11,7 @@ const ManageOrders = () => {
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const ordersPerPage = 6; // number of cards per page
+  const ordersPerPage = 6;
 
   // Fetch orders
   useEffect(() => {
@@ -22,7 +23,7 @@ const ManageOrders = () => {
           res.data.map((order) => ({
             id: order._id,
             name: order.menuName,
-            category: "Home", // placeholder
+            category: "Home",
             unit: "per_event",
             cost: order.price,
             createdBy: order.email,
@@ -55,9 +56,9 @@ const ManageOrders = () => {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-        Manage Orders
-      </h1>
+      <motion.h1 className="text-3xl sm:text-4xl font-bold mb-10 text-gray-900 dark:text-white">
+        Manage <span className="text-primary">Orders</span>
+      </motion.h1>
 
       {/* Orders Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -73,7 +74,7 @@ const ManageOrders = () => {
               Ordered by: {order.createdBy}
             </div>
             <div className="flex flex-wrap gap-2 mb-2">
-              <span className="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 rounded-full text-xs font-medium">
+              <span className="px-2 py-1 bg-primary/10 text-primary dark:bg-primary/70 dark:text-blue-100 rounded-full text-xs font-medium">
                 {order.category}
               </span>
               <span className="px-2 py-1 bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100 rounded-full text-xs font-medium">
@@ -92,7 +93,7 @@ const ManageOrders = () => {
             <div className="text-gray-700 dark:text-gray-300 mb-1">
               Cost:{" "}
               <span className="font-semibold">
-                {order.cost.toLocaleString()} BDT
+                ${order.cost.toLocaleString()}
               </span>
             </div>
             <div className="text-gray-500 dark:text-gray-400 text-xs">
@@ -117,7 +118,7 @@ const ManageOrders = () => {
             onClick={() => setCurrentPage(i + 1)}
             className={`px-3 py-1 rounded-md border ${
               currentPage === i + 1
-                ? "bg-yellow-500 border-yellow-500 text-white"
+                ? "bg-primary border-primary text-white"
                 : "border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
             } transition-colors`}
           >

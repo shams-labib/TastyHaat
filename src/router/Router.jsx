@@ -91,7 +91,11 @@ export const router = createBrowserRouter([
 
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
@@ -122,7 +126,7 @@ export const router = createBrowserRouter([
         Component: UsersManagement,
       },
       {
-        path: "manage-order",
+        path: "manage-orders",
         Component: ManageOrders,
       },
       {

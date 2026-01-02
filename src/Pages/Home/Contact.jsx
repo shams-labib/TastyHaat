@@ -9,20 +9,15 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
-    <div
-      id="contact"
-      className="bg-gray-50 dark:bg-gray-800 flex items-center justify-center px-4 py-16 sm:py-24"
-    >
-      <div className="w-full max-w-7xl grid gap-8 lg:grid-cols-2">
-        {/* Contact Info Card */}
+    <section id="contact" className="bg-gray-50 dark:bg-gray-800 py-16 px-4">
+      <div className="max-w-7xl mx-auto grid gap-8 lg:grid-cols-2 px-5">
         <motion.div
-          className="relative p-8 sm:p-10 bg-gray-800/80 dark:bg-gray-700/80 text-white rounded-3xl shadow-2xl overflow-hidden"
+          className="relative p-8 sm:p-10 bg-gray-800/70 dark:bg-gray-700/80 text-white rounded-3xl shadow-2xl overflow-hidden"
           initial={{ x: -50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
-          {/* Soft background circles */}
           <div className="absolute w-28 h-28 bg-white/10 rounded-full -top-10 -left-10 animate-bounce-slow"></div>
           <div className="absolute w-28 h-28 bg-white/10 rounded-full -bottom-10 -right-10 animate-bounce-slow-reverse"></div>
 
@@ -74,20 +69,20 @@ const Contact = () => {
             <input
               type="text"
               placeholder="Your Name"
-              className="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-400 outline-none transition"
+              className="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary outline-none transition"
             />
             <input
               type="email"
               placeholder="Your Email"
-              className="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-400 outline-none transition"
+              className="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary outline-none transition"
             />
             <textarea
               placeholder="Your Message"
-              className="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-400 outline-none h-32 resize-none transition"
+              className="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary outline-none h-32 resize-none transition"
             ></textarea>
             <motion.button
               type="submit"
-              className="w-full py-3 sm:py-4 rounded-2xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold text-lg shadow-md hover:shadow-lg transition-all duration-300"
+              className="w-full py-3 sm:py-4 rounded-2xl bg-primary dark:bg-white text-white dark:text-gray-900 font-bold text-lg shadow-md hover:shadow-lg transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -111,7 +106,7 @@ const Contact = () => {
         }
         .animate-bounce-slow-reverse { animation: bounce-slow-reverse 5s ease-in-out infinite; }
       `}</style>
-    </div>
+    </section>
   );
 };
 
