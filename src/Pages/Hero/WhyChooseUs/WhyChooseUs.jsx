@@ -56,7 +56,7 @@ const WhyChooseUs = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-base-100 dark:bg-gray-800">
+    <section className="py-20 bg-base-100 dark:bg-gray-800 px-4">
       <style>{iconAnimations}</style>
 
       <div className="max-w-7xl mx-auto px-4">

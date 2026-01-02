@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import { Link } from "react-router";
-import { ShoppingCart, Star, Heart } from "lucide-react"; // Lucide icons
+import { ShoppingCart, Star, Heart } from "lucide-react";
 import { Coffee, Pizza } from "lucide-react";
 
 const MenuCards = () => {
@@ -21,7 +21,7 @@ const MenuCards = () => {
   }, [menus]);
 
   return (
-    <div id="menu" className="container mx-auto">
+    <div id="menu" className="max-w-7xl mx-auto px-4">
       <div className="bg-base-100 dark:bg-gray-800 py-16 px-5">
         <h1
           data-aos="fade-up"
@@ -29,7 +29,7 @@ const MenuCards = () => {
         >
           {/* Floating Star above */}
           <motion.div
-            className="absolute -top-6 left-1/2 -translate-x-1/2 text-yellow-400"
+            className="absolute -top-6 left-1/2 -translate-x-1/2 text-primary"
             animate={{ y: [0, -10, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
           >
@@ -38,7 +38,7 @@ const MenuCards = () => {
 
           {/* Floating Coffee icon top-left */}
           <motion.div
-            className="absolute -top-4 left-1/3 text-red-500"
+            className="absolute -top-4 left-1/3 text-primary"
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 2.2 }}
           >
@@ -47,7 +47,7 @@ const MenuCards = () => {
 
           {/* Floating Pizza icon bottom-right */}
           <motion.div
-            className="absolute -bottom-6 right-1/3 text-green-400"
+            className="absolute -bottom-6 right-1/3 text-primary"
             animate={{ rotate: [0, 15, 0], scale: [1, 1.2, 1] }}
             transition={{ repeat: Infinity, duration: 3 }}
           >
@@ -101,7 +101,7 @@ const MenuCards = () => {
                 </motion.div>
               </div>
 
-              <div className="p-5 flex flex-col justify-between h-[220px]">
+              <div className="p-5 flex flex-col justify-between h-55">
                 <div>
                   <h2 className="text-lg font-semibold mb-2 dark:text-white">
                     {menu.name}
@@ -120,7 +120,7 @@ const MenuCards = () => {
                           stiffness: 300,
                         }}
                       >
-                        <Star className="text-yellow-400" size={16} />
+                        <Star className="text-primary" size={16} />
                       </motion.div>
                     ))}
                   </div>
@@ -133,7 +133,7 @@ const MenuCards = () => {
                 <div className="flex justify-between items-center mt-auto">
                   <Link
                     to={`/all-menu/${menu._id}`}
-                    className="btn bg-primary hover:bg-secondary rounded-lg font-semibold transition-colors duration-300 text-white flex items-center gap-2 px-4 py-2"
+                    className="btn bg-primary hover:bg-secondary rounded-lg font-semibold transition-colors duration-300 text-white flex items-center shadow-none gap-2 px-4 py-2"
                   >
                     View Details <ShoppingCart size={18} />
                   </Link>

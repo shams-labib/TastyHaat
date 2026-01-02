@@ -24,6 +24,8 @@ import RefundPolicy from "./../Pages/Legal/RefundPolicy";
 import PrivacyPolicy from "./../Pages/Legal/PrivacyPolicy";
 import TermsConditions from "./../Pages/Legal/TermsConditions";
 import ManageOrders from "../Pages/Dashboard/Manage Order/ManageOrder";
+import OrderHistory from "../Pages/Dashboard/OrderHistory/PaymentHistory";
+import PaymentHistory from "../Pages/Dashboard/OrderHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -89,7 +91,11 @@ export const router = createBrowserRouter([
 
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
@@ -120,9 +126,13 @@ export const router = createBrowserRouter([
         Component: UsersManagement,
       },
       {
-        path: "manage-order",
+        path: "manage-orders",
         Component: ManageOrders,
       },
+      {
+        path: "payment-history",
+        Component: PaymentHistory,
+      }
     ],
   },
 ]);
