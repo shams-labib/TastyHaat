@@ -32,7 +32,20 @@ const topBurgers = [
     price: "$17.50",
     img: "https://www.recipetineats.com/tachyon/2023/09/Crispy-fried-chicken-burgers_5.jpg",
   },
+  {
+    name: "Smokey BBQ Burger",
+    desc: "Grilled kima with BBQ sauce and lettuce",
+    price: "$18.00",
+    img: "https://i.ibb.co.com/Q7GgpVQG/photo-1613160775054-d4a634592b7f.avif",
+  },
+  {
+    name: "Classic Beef Stack",
+    desc: "Juicy beef patty with onion and special sauce",
+    price: "$15.50",
+    img: "https://i.ibb.co.com/mF9W4zYG/photo-1705131186344-beaed61d95b4.avif",
+  },
 ];
+
 
 const TopSellerBurgers = () => {
   return (
@@ -41,7 +54,7 @@ const TopSellerBurgers = () => {
       <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-900 dark:text-white relative w-full">
         {/* Floating Star */}
         <motion.div
-          className="absolute -top-6 left-1/2 -translate-x-1/2 text-yellow-400"
+          className="absolute -top-6 left-1/2 -translate-x-1/2 text-primary"
           animate={{ y: [0, -10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
@@ -50,7 +63,7 @@ const TopSellerBurgers = () => {
 
         {/* Floating Coffee */}
         <motion.div
-          className="absolute -top-4 left-1/3 text-red-500"
+          className="absolute -top-4 left-1/3 text-primary"
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2.2 }}
         >
@@ -59,7 +72,7 @@ const TopSellerBurgers = () => {
 
         {/* Floating Pizza */}
         <motion.div
-          className="absolute -bottom-6 right-1/3 text-green-400"
+          className="absolute -bottom-6 right-1/3 text-primary"
           animate={{ rotate: [0, 15, 0], scale: [1, 1.2, 1] }}
           transition={{ repeat: Infinity, duration: 3 }}
         >
@@ -84,8 +97,8 @@ const TopSellerBurgers = () => {
         }}
         breakpoints={{
           640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+          768: { slidesPerView: 4 },
+          1024: { slidesPerView: 4 },
         }}
       >
         {topBurgers.map((burger, i) => (
@@ -94,15 +107,14 @@ const TopSellerBurgers = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.2 }}
-              whileHover={{ scale: 1.05 }}
               className="flex flex-col items-center text-center cursor-pointer p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
               {/* Burger Image */}
-              <div className="w-36 h-36 mb-4 rounded-full overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
+              <div className="w-40 h-40 mb-4 rounded-full overflow-hidden shadow-xl border border-gray-200 dark:border-gray-700">
                 <img
                   src={burger.img}
                   alt={burger.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full rounded-full hover:scale-110 transition-transform duration-300 object-cover"
                 />
               </div>
 
@@ -119,7 +131,7 @@ const TopSellerBurgers = () => {
               </div>
 
               {/* Burger Description */}
-              <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 px-2">
+              <p className="text-gray-600 dark:text-gray-300 line-clamp-1 text-sm mb-4 px-2">
                 {burger.desc}
               </p>
 

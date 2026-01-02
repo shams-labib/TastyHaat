@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaUser, FaUserShield } from "react-icons/fa";
+import { FaHistory, FaUser, FaUserShield } from "react-icons/fa";
 import Logo from "../../Components/shared/Logo/Logo";
 import {
   MdFormatListBulleted,
@@ -89,6 +89,12 @@ const DashboardLayout = () => {
             to="/dashboard/manage-order"
             icon={<MdFormatListBulletedAdd size={22} />}
             text="Manage Order"
+            onClick={() => setSidebarOpen(false)}
+          />
+          <SidebarItem
+            to="/dashboard/payment-history"
+            icon={<FaHistory size={22} />}
+            text="Payment History"
             onClick={() => setSidebarOpen(false)}
           />
         </div>

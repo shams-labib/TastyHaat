@@ -39,7 +39,7 @@ const teamMembers = [
     skills: ["React", "Recharts", "TailwindCSS", "Framer Motion"],
     github: "#",
     linkedin: "#",
-    college: "Uttara University",
+    college: "Daffodil International University",
   },
   {
     name: "Aminur Rahman",
@@ -94,14 +94,14 @@ const TeamSection = () => {
       <div className="relative text-center mb-14">
         <motion.div
           {...floatAnim}
-          className="absolute left-1/2 -translate-x-1/2 -top-10 text-indigo-500"
+          className="absolute left-1/2 -translate-x-1/2 -top-10 text-primary"
         >
           <Users size={34} />
         </motion.div>
 
         <motion.div
           {...floatAnim}
-          className="absolute left-[30%] top-0 text-yellow-400"
+          className="absolute left-[30%] top-0 text-primary"
         >
           <Star size={26} />
         </motion.div>
@@ -109,7 +109,7 @@ const TeamSection = () => {
         <motion.div
           animate={{ rotate: [0, 15, -15, 0] }}
           transition={{ duration: 3, repeat: Infinity }}
-          className="absolute right-[30%] top-0 text-green-500"
+          className="absolute right-[30%] top-0 text-primary"
         >
           <Settings size={26} />
         </motion.div>
@@ -144,7 +144,7 @@ const TeamSection = () => {
               className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-800/80 dark:to-gray-700/70 rounded-3xl shadow-xl p-6 flex flex-col items-center text-center transition-all"
             >
               {/* Image */}
-              <div className="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-indigo-300 dark:border-purple-600 shadow-lg">
+              <div className="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-primary shadow-lg">
                 <img
                   src={member.img}
                   alt={member.name}
@@ -156,11 +156,11 @@ const TeamSection = () => {
                 {member.name}
               </h3>
 
-              <p className="text-indigo-600 dark:text-purple-400 font-semibold mb-2">
+              <p className="text-primary font-semibold mb-2">
                 {member.role}
               </p>
 
-              <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+              <p className="text-gray-600 line-clamp-2 dark:text-gray-300 text-sm mb-3">
                 {member.bio}
               </p>
 
@@ -174,7 +174,7 @@ const TeamSection = () => {
                   <motion.span
                     whileHover={{ scale: 1.1 }}
                     key={idx}
-                    className="bg-indigo-100 dark:bg-purple-700/60 text-indigo-800 dark:text-purple-200 px-3 py-1 rounded-full text-xs flex items-center gap-1"
+                    className="bg-primary/20 text-black dark:text-white px-3 py-1 rounded-full text-xs flex items-center gap-1"
                   >
                     <Code size={14} /> {skill}
                   </motion.span>

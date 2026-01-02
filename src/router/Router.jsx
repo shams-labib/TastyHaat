@@ -24,6 +24,8 @@ import RefundPolicy from "./../Pages/Legal/RefundPolicy";
 import PrivacyPolicy from "./../Pages/Legal/PrivacyPolicy";
 import TermsConditions from "./../Pages/Legal/TermsConditions";
 import ManageOrders from "../Pages/Dashboard/Manage Order/ManageOrder";
+import OrderHistory from "../Pages/Dashboard/OrderHistory/PaymentHistory";
+import PaymentHistory from "../Pages/Dashboard/OrderHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -123,6 +125,10 @@ export const router = createBrowserRouter([
         path: "manage-order",
         Component: ManageOrders,
       },
+      {
+        path: "payment-history",
+        Component: PaymentHistory,
+      }
     ],
   },
 ]);
