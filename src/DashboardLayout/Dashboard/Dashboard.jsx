@@ -1,19 +1,29 @@
 import React, { useState } from "react";
-import { FaHistory, FaUser, FaUserShield } from "react-icons/fa";
-import Logo from "../../Components/shared/Logo/Logo";
 import {
-  MdFormatListBulleted,
-  MdFormatListBulletedAdd,
-  MdManageAccounts,
-} from "react-icons/md";
-import { IoMdAddCircle } from "react-icons/io";
-import { IoRestaurant } from "react-icons/io5";
-import { TbReorder } from "react-icons/tb";
+  FaFileInvoiceDollar,
+  FaClipboardList,
+  FaUser,
+  FaUserShield,
+  FaUsersCog,
+  FaPlusCircle,
+  FaUtensils,
+  FaShoppingBag,
+} from "react-icons/fa";
+import Logo from "../../Components/shared/Logo/Logo";
 import { NavLink, Outlet } from "react-router";
 import { Home, Menu, X } from "lucide-react";
+import useAuth from "../../Context/useAuth/useAuth";
+import useRole from "../../hooks/useRole";
+import Loader from "../../Pages/Loader/Loader";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { user, loading } = useAuth();
+  const { role, isLoading } = useRole(user);
+
+  if (loading || isLoading || !user || !role) {
+    return <Loader />;
+  }
 
   return (
     <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -38,6 +48,7 @@ const DashboardLayout = () => {
         </div>
 
         <div className="px-4 py-6 space-y-2">
+          {/* Common routes for all users */}
           <SidebarItem
             to="/"
             icon={<Home size={22} />}
@@ -50,51 +61,68 @@ const DashboardLayout = () => {
             text="Profile"
             onClick={() => setSidebarOpen(false)}
           />
-          <SidebarItem
-            to="/dashboard/add-menu"
-            icon={<IoMdAddCircle size={22} />}
-            text="Add Menu"
-            onClick={() => setSidebarOpen(false)}
-          />
-          <SidebarItem
-            to="/dashboard/my-menus"
-            icon={<IoRestaurant size={22} />}
-            text="Posted Menus"
-            onClick={() => setSidebarOpen(false)}
-          />
-          <SidebarItem
-            to="/dashboard/admin"
-            icon={<FaUserShield size={22} />}
-            text="Admin"
-            onClick={() => setSidebarOpen(false)}
-          />
-          <SidebarItem
-            to="/dashboard/users-management"
-            icon={<MdManageAccounts size={22} />}
-            text="Users Management"
-            onClick={() => setSidebarOpen(false)}
-          />
-          <SidebarItem
-            to="/dashboard/my-orders"
-            icon={<MdFormatListBulleted size={22} />}
-            text="My Orders"
-            onClick={() => setSidebarOpen(false)}
-          />
-          <SidebarItem
-            to="/all-menu"
-            icon={<MdFormatListBulletedAdd size={22} />}
-            text="Place Orders"
-            onClick={() => setSidebarOpen(false)}
-          />
-          <SidebarItem
-            to="/dashboard/manage-orders"
-            icon={<TbReorder size={22} />}
-            text="Manage Orders"
-            onClick={() => setSidebarOpen(false)}
-          />
+
+          {/* Conditional routes based on role */}
+          {role === "user" && (
+            <>
+              <SidebarItem
+                to="/dashboard/my-orders"
+                icon={<FaShoppingBag size={22} />}
+                text="My Orders"
+                onClick={() => setSidebarOpen(false)}
+              />
+              <SidebarItem
+                to="/all-menu"
+                icon={<FaUtensils size={22} />}
+                text="Place Orders"
+                onClick={() => setSidebarOpen(false)}
+              />
+            </>
+          )}
+
+          {role === "seller" && (
+            <>
+              <SidebarItem
+                to="/dashboard/add-menu"
+                icon={<FaPlusCircle size={22} />}
+                text="Add Menu"
+                onClick={() => setSidebarOpen(false)}
+              />
+              <SidebarItem
+                to="/dashboard/my-menus"
+                icon={<FaClipboardList size={22} />}
+                text="Posted Menus"
+                onClick={() => setSidebarOpen(false)}
+              />
+            </>
+          )}
+
+          {role === "admin" && (
+            <>
+              <SidebarItem
+                to="/dashboard/admin"
+                icon={<FaUserShield size={22} />}
+                text="Admin"
+                onClick={() => setSidebarOpen(false)}
+              />
+              <SidebarItem
+                to="/dashboard/users-management"
+                icon={<FaUsersCog size={22} />}
+                text="Users Management"
+                onClick={() => setSidebarOpen(false)}
+              />
+              <SidebarItem
+                to="/dashboard/manage-orders"
+                icon={<FaClipboardList size={22} />}
+                text="Manage Orders"
+                onClick={() => setSidebarOpen(false)}
+              />
+            </>
+          )}
+
           <SidebarItem
             to="/dashboard/payment-history"
-            icon={<FaHistory size={22} />}
+            icon={<FaFileInvoiceDollar size={22} />}
             text="Payment History"
             onClick={() => setSidebarOpen(false)}
           />
@@ -103,7 +131,10 @@ const DashboardLayout = () => {
 
       <div className="flex-1 flex flex-col">
         <div className="lg:hidden flex items-center justify-between p-4 bg-white dark:bg-gray-800 shadow">
-          <button onClick={() => setSidebarOpen(!sidebarOpen)}>
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="text-gray-800 dark:text-white"
+          >
             {sidebarOpen ? <X /> : <Menu />}
           </button>
           <span className="font-semibold text-gray-800 dark:text-gray-100">
