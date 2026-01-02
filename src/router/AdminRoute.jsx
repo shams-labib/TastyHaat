@@ -1,43 +1,40 @@
 import React from "react";
-import useAuth from "./../Context/useAuth/useAuth";
-import useRole from "./../hooks/useRole";
+import useAuth from "../Context/useAuth/useAuth";
+import useRole from "../hooks/useRole";
 import { Link } from "react-router";
+import Loader from "../Pages/Loader/Loader";
 
 const AdminRoute = ({ children }) => {
-  const { loading } = useAuth();
-  const { role, isLoading } = useRole();
+  const { user, loading } = useAuth();
+  const { role, isLoading } = useRole(user);
 
-  if (loading || isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <span className="loading loading-spinner text-blue-600"></span>
-      </div>
-    );
+  if (loading || isLoading || !user) {
+    return <Loader />;
   }
 
-  if (role?.role !== "admin") {
+  if (role !== "admin") {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-primary text-3xl font-bold mb-4">
             Access Denied
           </h2>
-          <p className="text-xl mt-4">
+          <p className="text-base mt-2">
             You do not have permission to view this page.
           </p>
-          <p className="text-xl mt-2">
+          <p className="text-base mt-2">
             Please check your credentials and try again.
           </p>
           <div className="flex items-center gap-2 mt-6 justify-center">
             <Link
               to="/"
-              className="btn text-center text-white bg-blue-600 hover:bg-blue-700"
+              className="btn text-white bg-primary/90 hover:bg-primary"
             >
               Go to Home
             </Link>
             <Link
               to="/dashboard"
-              className="btn text-center text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600"
+              className="btn text-primary border border-primary hover:bg-primary hover:text-white"
             >
               Go to Dashboard
             </Link>
@@ -46,6 +43,7 @@ const AdminRoute = ({ children }) => {
       </div>
     );
   }
+
   return children;
 };
 

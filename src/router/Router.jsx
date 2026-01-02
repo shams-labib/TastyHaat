@@ -26,6 +26,9 @@ import TermsConditions from "./../Pages/Legal/TermsConditions";
 import ManageOrders from "../Pages/Dashboard/Manage Order/ManageOrder";
 import OrderHistory from "../Pages/Dashboard/OrderHistory/PaymentHistory";
 import PaymentHistory from "../Pages/Dashboard/OrderHistory/PaymentHistory";
+import SellerRoute from "./SellerRoute";
+import AdminRoute from "./AdminRoute";
+import NotSellerAdminRoute from "./NotSellerAdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -107,32 +110,56 @@ export const router = createBrowserRouter([
       },
       {
         path: "add-menu",
-        Component: AddMenu,
+        element: (
+          <SellerRoute>
+            <AddMenu></AddMenu>
+          </SellerRoute>
+        ),
       },
       {
         path: "my-menus",
-        Component: PostedMenus,
+        element: (
+          <SellerRoute>
+            <PostedMenus></PostedMenus>
+          </SellerRoute>
+        ),
       },
       {
         path: "my-orders",
-        Component: MyOrders,
+        element: (
+          <NotSellerAdminRoute>
+            <MyOrders></MyOrders>
+          </NotSellerAdminRoute>
+        ),
       },
       {
         path: "admin",
-        Component: AdminDashboard,
+        element: (
+          <AdminRoute>
+            <AdminDashboard></AdminDashboard>
+          </AdminRoute>
+        ),
       },
       {
         path: "users-management",
-        Component: UsersManagement,
+        element: (
+          <AdminRoute>
+            <UsersManagement></UsersManagement>
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-orders",
-        Component: ManageOrders,
+        element: (
+          <AdminRoute>
+            <ManageOrders></ManageOrders>
+          </AdminRoute>
+        ),
       },
       {
         path: "payment-history",
         Component: PaymentHistory,
-      }
+      },
     ],
   },
 ]);

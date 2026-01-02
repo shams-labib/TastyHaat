@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const Contact = () => {
   return (
     <section id="contact" className="bg-gray-50 dark:bg-gray-800 py-16 px-4">
-      <div className="max-w-7xl mx-auto grid gap-8 lg:grid-cols-2 px-5">
+      <div className="container mx-auto grid gap-8 lg:grid-cols-2 md:px-8">
         <motion.div
           className="relative p-8 sm:p-10 bg-gray-800/70 dark:bg-gray-700/80 text-white rounded-3xl shadow-2xl overflow-hidden"
           initial={{ x: -50, opacity: 0 }}
@@ -82,7 +82,7 @@ const Contact = () => {
             ></textarea>
             <motion.button
               type="submit"
-              className="w-full py-3 sm:py-4 rounded-2xl bg-primary dark:bg-white text-white dark:text-gray-900 font-bold text-lg shadow-md hover:shadow-lg transition-all duration-300"
+              className="w-full py-3 sm:py-4 rounded-2xl bg-primary text-white font-bold text-lg shadow-md hover:shadow-lg transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

@@ -5,9 +5,13 @@ import {
   FaPlusCircle,
   FaShoppingBag,
   FaUser,
+  FaUsersCog,
+  FaClipboardList,
 } from "react-icons/fa";
-import useAuth from "../../../Context/useAuth/useAuth";
 import { Link } from "react-router";
+import useAuth from "../../../Context/useAuth/useAuth";
+import useRole from "../../../hooks/useRole";
+import Loader from "../../Loader/Loader";
 
 const INITIAL_STATS = [
   { title: "Total Menus", value: 12, icon: <FaUtensils size={26} /> },
@@ -18,10 +22,61 @@ const INITIAL_STATS = [
 
 const DashboardLanding = () => {
   const { user } = useAuth();
+  const { role, isLoading } = useRole(user);
   const [stats] = useState(INITIAL_STATS);
+
+  if (isLoading) return <Loader />;
+
+  const roleButtons = {
+    user: [
+      {
+        to: "/all-menu",
+        text: "Place Orders",
+        icon: <FaUtensils />,
+        style: "btn-primary",
+      },
+      {
+        to: "/dashboard/my-orders",
+        text: "View Orders",
+        icon: <FaShoppingBag />,
+        style: "btn-secondary",
+      },
+    ],
+    seller: [
+      {
+        to: "/dashboard/add-menu",
+        text: "Add New Menu",
+        icon: <FaPlusCircle />,
+        style: "btn-primary",
+      },
+      {
+        to: "/dashboard/my-menus",
+        text: "Posted Menus",
+        icon: <FaClipboardList />,
+        style: "btn-secondary",
+      },
+    ],
+    admin: [
+      {
+        to: "/dashboard/manage-orders",
+        text: "Manage Orders",
+        icon: <FaClipboardList />,
+        style: "btn-primary",
+      },
+      {
+        to: "/dashboard/users-management",
+        text: "Users Management",
+        icon: <FaUsersCog />,
+        style: "btn-secondary",
+      },
+    ],
+  };
+
+  const buttons = roleButtons[role] || roleButtons.user;
 
   return (
     <div className="p-6 md:p-10">
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -36,6 +91,7 @@ const DashboardLanding = () => {
         </p>
       </motion.div>
 
+      {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {stats.map((stat, index) => (
           <motion.div
@@ -43,39 +99,37 @@ const DashboardLanding = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="card bg-base-100 shadow-xl"
+            className="card bg-base-100 dark:bg-gray-800 shadow-xl"
           >
             <div className="card-body flex-row items-center gap-4">
               <div className="p-4 rounded-xl bg-primary/10 text-primary">
                 {stat.icon}
               </div>
               <div>
-                <p className="text-sm text-base-content/60">{stat.title}</p>
-                <h2 className="text-2xl font-bold">{stat.value}</h2>
+                <p className="text-sm text-base-content/60 dark:text-gray-300">
+                  {stat.title}
+                </p>
+                <h2 className="text-2xl font-bold dark:text-gray-100">
+                  {stat.value}
+                </h2>
               </div>
             </div>
           </motion.div>
         ))}
       </div>
 
+      {/* Role-based Buttons */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <Link to="/dashboard/add-menu">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className="btn btn-primary w-full py-6 text-lg flex items-center justify-center gap-2"
-          >
-            <FaPlusCircle /> Add New Menu
-          </motion.button>
-        </Link>
-
-        <Link to="/dashboard/my-orders">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className="btn btn-secondary w-full py-6 text-lg flex items-center justify-center gap-2"
-          >
-            <FaShoppingBag /> View Orders
-          </motion.button>
-        </Link>
+        {buttons.map((btn, index) => (
+          <Link key={index} to={btn.to}>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              className={`btn ${btn.style} w-full py-6 text-lg flex items-center justify-center gap-2`}
+            >
+              {btn.icon} {btn.text}
+            </motion.button>
+          </Link>
+        ))}
       </div>
     </div>
   );

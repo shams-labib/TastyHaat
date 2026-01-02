@@ -46,10 +46,9 @@ const topBurgers = [
   },
 ];
 
-
 const TopSellerBurgers = () => {
   return (
-    <div className="py-16 px-4 relative">
+    <div className="container mx-auto py-16 px-4 relative">
       <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-900 dark:text-white relative w-full">
         <motion.div
           className="absolute -top-6 left-1/2 -translate-x-1/2 text-primary"
@@ -134,7 +133,7 @@ const TopSellerBurgers = () => {
 
               <motion.button
                 whileHover={{ scale: 1.1, brightness: 1.2 }}
-                className="px-6 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold transition-all duration-300"
+                className="px-6 py-2 rounded-full bg-linear-to-r from-primary to-secondary text-white font-semibold transition-all duration-300"
               >
                 Order Now
               </motion.button>

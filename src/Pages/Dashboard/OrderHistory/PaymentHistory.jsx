@@ -141,35 +141,37 @@ const PaymentHistory = () => {
   ]);
 
   return (
-    <div className="p-4 sm:p-6 min-h-screen text-gray-800 dark:text-base-200">
+    <div className="p-4 sm:p-6 min-h-screen dark:bg-gray-900 transition-colors">
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-3xl sm:text-4xl font-bold mb-12"
+        className="text-3xl sm:text-4xl font-bold mb-10 text-gray-900 dark:text-white"
       >
         Payment <span className="text-primary">History</span>
       </motion.h1>
 
       {payments.length === 0 ? (
-        <p className="text-center text-base-content/60">
+        <p className="text-center md:text-left text-gray-700 dark:text-gray-300 py-20">
           No payment history found.
         </p>
       ) : (
         <>
-          {/* Mobile View */}
+          {/* Mobile Cards */}
           <div className="space-y-4 md:hidden">
             {payments.map((payment, index) => (
-              <motion.div
+              <div
                 key={payment._id || index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="card bg-base-100 shadow-md border border-green-600"
+                className="card bg-white dark:bg-gray-800 shadow-xl border border-gray-200 dark:border-gray-700"
               >
-                <div className="card-body p-4 space-y-2">
-                  <div className="flex justify-between">
+                <div className="card-body p-4 space-y-2 text-gray-800 dark:text-gray-200">
+                  <div className="flex justify-between items-center">
                     <h3 className="font-semibold">{payment.menuName}</h3>
-                    <span className="badge badge-success">Paid</span>
+                    <span className={`badge badge-success`}>Paid</span>
                   </div>
+
+                  <p className="text-sm">
+                    <strong>Customer:</strong> {payment.customerName}
+                  </p>
 
                   <p className="text-sm">
                     <strong>Price:</strong> ৳{payment.price}
@@ -184,17 +186,18 @@ const PaymentHistory = () => {
                     {new Date(payment.paidAt).toLocaleString()}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          {/* Desktop View */}
-          <div className="overflow-x-auto hidden md:block">
-            <table className="table text-center border w-full">
-              <thead>
-                <tr className="text-gray-800 dark:text-base-200">
+          {/* Desktop Table */}
+          <div className="hidden md:block overflow-x-auto rounded-xl shadow">
+            <table className="table w-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+              <thead className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+                <tr>
                   <th>#</th>
-                  <th>Name</th>
+                  <th>Customer</th>
+                  <th>Menu Name</th>
                   <th>Price</th>
                   <th>Status</th>
                   <th>Transaction ID</th>
@@ -203,23 +206,20 @@ const PaymentHistory = () => {
               </thead>
               <tbody>
                 {payments.map((payment, index) => (
-                  <motion.tr
+                  <tr
                     key={payment._id || index}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="border-b hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
                     <th>{index + 1}</th>
+                    <td>{payment.customerName}</td>
                     <td>{payment.menuName}</td>
                     <td>৳{payment.price}</td>
                     <td>
                       <span className="badge badge-success">Paid</span>
                     </td>
                     <td className="text-xs">{payment.transactionId}</td>
-                    <td>
-                      {new Date(payment.paidAt).toLocaleString()}
-                    </td>
-                  </motion.tr>
+                    <td>{new Date(payment.paidAt).toLocaleString()}</td>
+                  </tr>
                 ))}
               </tbody>
             </table>

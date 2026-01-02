@@ -39,7 +39,6 @@ const MyProfile = () => {
   const handleSave = async () => {
     setLoading(true);
     try {
-      // Call your API to update user profile
       const res = await fetch(
         `${import.meta.env.VITE_API_URL}/users/${user.uid}`,
         {
@@ -72,7 +71,6 @@ const MyProfile = () => {
         animate="visible"
         transition={{ duration: 0.6 }}
       >
-        {/* LEFT PROFILE CARD */}
         <div className="rounded-3xl bg-base-100 dark:bg-gray-900 shadow-xl overflow-hidden">
           <div className="flex flex-col items-center p-6 bg-linear-to-br from-orange-500 to-red-500 text-white">
             <div className="avatar">
@@ -209,7 +207,7 @@ const MyProfile = () => {
               <img
                 src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
                 alt="food"
-                className="w-60 md:w-70 max-w-full opacity-90"
+                className="w-full md:w-70 max-w-full opacity-90"
               />
             </div>
           </div>

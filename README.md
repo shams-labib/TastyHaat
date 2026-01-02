@@ -10,6 +10,14 @@
 | Aftab                | Food seller Dashboard Designer | Food Seller Dashboard                    |
 | Taslima Akter        | Landing page Section Designer  | More Landing page add                    |
 
+## Test Credentials
+
+| User Role   | Email                      | Password          |
+| ----------- | -------------------------- | ----------------- |
+| Admin       | cristianoronaldo@gmail.com | CR7fgthg@P0rtu    |
+| Food Seller | lionelmessi@gmail.com      | Messi10fgthg@Arg2 |
+| Customer    | aliabhatt@gmail.com        | Al1@Bh@t16Box0f   |
+
 ## 🛠️ Tech Stack
 
 - **Frontend Framework**: React (Vite)
