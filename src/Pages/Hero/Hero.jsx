@@ -10,10 +10,10 @@ const Hero = () => {
 
   return (
     <section className="bg-[#FFF8F6] dark:bg-gray-900 py-16 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between px-3 py-10">
+      <div className="container mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between md:px-3 py-10">
           {/* Text Content */}
-          <div className="space-y-6 max-w-xl ml-5" data-aos="fade-right">
+          <div className="space-y-6 max-w-xl md:ml-5" data-aos="fade-right">
             <h1 className="text-5xl font-bold leading-[1.2]">
               <span className="text-primary">Fast, Fresh</span>
               <br />
@@ -41,7 +41,7 @@ const Hero = () => {
                 placeholder="Enter your location"
                 className="w-full px-4 py-2 bg-transparent text-base-content placeholder:text-base-content/60 border-none outline-none focus:outline-none"
               />
-              <button className=" btn bg-gradient-to-r from-[#ff6000] to-[#fc3c2c] text-white border-none rounded-r-md transition-all duration-500 ease-in-out shadow-md hover:shadow-lg">
+              <button className=" btn bg-linear-to-r from-[#ff6000] to-[#fc3c2c] text-white border-none rounded-r-md transition-all duration-500 ease-in-out shadow-md hover:shadow-lg">
                 Find Food
               </button>
             </div>
