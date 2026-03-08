@@ -28,7 +28,7 @@ const UsersManagement = () => {
       if (!res.ok) return console.error(data);
 
       setUsers((prev) =>
-        prev.map((u) => (u._id === data.user._id ? data.user : u))
+        prev.map((u) => (u._id === data.user._id ? data.user : u)),
       );
     } catch (error) {
       console.error("Role update failed", error);

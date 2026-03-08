@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // ✅ useEffect যোগ
+import { FaHistory, FaUser, FaUserShield } from "react-icons/fa";
+import Logo from "../../Components/shared/Logo/Logo";
 import {
   FaFileInvoiceDollar,
   FaClipboardList,
@@ -12,18 +14,25 @@ import {
 import Logo from "../../Components/shared/Logo/Logo";
 import { NavLink, Outlet } from "react-router";
 import { Home, Menu, X } from "lucide-react";
-import useAuth from "../../Context/useAuth/useAuth";
+import useAxiosSecure from "../../Context/useaxios/useAxiosSecure";
 import useRole from "../../hooks/useRole";
-import Loader from "../../Pages/Loader/Loader";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { user, loading } = useAuth();
-  const { role, isLoading } = useRole(user);
+  const { role, isLoadind } = useRole();
 
-  if (loading || isLoading || !user || !role) {
-    return <Loader />;
-  }
+  const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    axiosSecure
+      .get("/users")
+      .then((res) => {
+        console.log(" Users data from backend:", res.data);
+      })
+      .catch((error) => {
+        console.error(" Users fetch error:", error);
+      });
+  }, [axiosSecure]);
 
   return (
     <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -48,83 +57,51 @@ const DashboardLayout = () => {
         </div>
 
         <div className="px-4 py-6 space-y-2">
-          {/* Common routes for all users */}
-          <SidebarItem
-            to="/"
-            icon={<Home size={22} />}
-            text="Home"
-            onClick={() => setSidebarOpen(false)}
-          />
+          <SidebarItem to="/" icon={<Home size={22} />} text="Home" />
           <SidebarItem
             to="/dashboard/profile"
             icon={<FaUser size={22} />}
             text="Profile"
-            onClick={() => setSidebarOpen(false)}
           />
-
-          {/* Conditional routes based on role */}
-          {role === "user" && (
-            <>
-              <SidebarItem
-                to="/dashboard/my-orders"
-                icon={<FaShoppingBag size={22} />}
-                text="My Orders"
-                onClick={() => setSidebarOpen(false)}
-              />
-              <SidebarItem
-                to="/all-menu"
-                icon={<FaUtensils size={22} />}
-                text="Place Orders"
-                onClick={() => setSidebarOpen(false)}
-              />
-            </>
-          )}
-
-          {role === "seller" && (
-            <>
-              <SidebarItem
-                to="/dashboard/add-menu"
-                icon={<FaPlusCircle size={22} />}
-                text="Add Menu"
-                onClick={() => setSidebarOpen(false)}
-              />
-              <SidebarItem
-                to="/dashboard/my-menus"
-                icon={<FaClipboardList size={22} />}
-                text="Posted Menus"
-                onClick={() => setSidebarOpen(false)}
-              />
-            </>
-          )}
-
-          {role === "admin" && (
-            <>
-              <SidebarItem
-                to="/dashboard/admin"
-                icon={<FaUserShield size={22} />}
-                text="Admin"
-                onClick={() => setSidebarOpen(false)}
-              />
-              <SidebarItem
-                to="/dashboard/users-management"
-                icon={<FaUsersCog size={22} />}
-                text="Users Management"
-                onClick={() => setSidebarOpen(false)}
-              />
-              <SidebarItem
-                to="/dashboard/manage-orders"
-                icon={<FaClipboardList size={22} />}
-                text="Manage Orders"
-                onClick={() => setSidebarOpen(false)}
-              />
-            </>
-          )}
-
+          <SidebarItem
+            to="/dashboard/add-menu"
+            icon={<IoMdAddCircle size={22} />}
+            text="Add Menu"
+          />
+          <SidebarItem
+            to="/dashboard/my-menus"
+            icon={<IoRestaurant size={22} />}
+            text="Posted Menus"
+          />
+          <SidebarItem
+            to="/dashboard/admin"
+            icon={<FaUserShield size={22} />}
+            text="Admin"
+          />
+          <SidebarItem
+            to="/dashboard/users-management"
+            icon={<MdManageAccounts size={22} />}
+            text="Users Management"
+          />
+          <SidebarItem
+            to="/dashboard/my-orders"
+            icon={<MdFormatListBulleted size={22} />}
+            text="My Orders"
+          />
+          <SidebarItem
+            to="/all-menu"
+            icon={<MdFormatListBulletedAdd size={22} />}
+            text="Place Orders"
+          />
+          <SidebarItem
+            to="/dashboard/manage-orders"
+            icon={<TbReorder size={22} />}
+            text="Manage Orders"
+          />
           <SidebarItem
             to="/dashboard/payment-history"
             icon={<FaFileInvoiceDollar size={22} />}
             text="Payment History"
-            onClick={() => setSidebarOpen(false)}
           />
         </div>
       </aside>
@@ -150,10 +127,9 @@ const DashboardLayout = () => {
   );
 };
 
-const SidebarItem = ({ icon, text, to, onClick }) => (
+const SidebarItem = ({ icon, text, to }) => (
   <NavLink
     to={to}
-    onClick={onClick}
     className={({ isActive }) =>
       `flex items-center gap-3 p-3 rounded-lg transition-all duration-200
       ${
