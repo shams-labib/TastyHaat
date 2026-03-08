@@ -8,8 +8,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 pb-12 grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Brand Section */}
         <div className="flex flex-col items-center md:items-start">
-          <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 tracking-tight">
-            TastyHaat
+          <h2 className="text-3xl font-bold tracking-tight">
+            Tasty<span className="text-primary">Haat</span>
           </h2>
           <p className="text-center md:text-left text-gray-300 mt-4 leading-relaxed">
             TastyHaat delivers fresh, delicious food with quality ingredients,
@@ -105,8 +105,8 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-700 bg-gray-900/70 py-6 text-center text-sm text-gray-400 flex flex-col md:flex-row justify-center items-center gap-2">
-        <span>© 2025</span>{" "}
-        <span className="font-semibold text-indigo-400">TastyHaat</span>. All
+        <span>© {new Date().getFullYear()}</span>
+        <span className="font-semibold">Tasty<span className="text-primary">Haat</span></span>. All
         rights reserved.
       </div>
     </footer>

@@ -88,14 +88,14 @@ const MenuDetails = () => {
             <div className="absolute inset-0 rounded-[28px] bg-gradient-to-t from-black/25 to-transparent" />
 
             {/* PRICE */}
-            <div className="absolute bottom-6 left-6 bg-primary dark:bg-slate-900/90 px-6 py-3 rounded-2xl text-xl font-extrabold text-white shadow-lg">
+            <div className="absolute bottom-6 left-6 bg-primary px-6 py-3 rounded-2xl text-xl font-extrabold text-white shadow-lg">
               ${menu.price}
             </div>
           </div>
 
           {/* CONTENT */}
           <div className="space-y-6">
-            <span className="inline-block px-4 py-1 rounded-full bg-primary/20 dark:bg-indigo-500/10 text-primary dark:text-indigo-400 text-sm font-semibold">
+            <span className="inline-block px-4 py-1 rounded-full bg-primary/20 dark:bg-primary/10  text-primary text-sm font-semibold">
               Chef Recommended
             </span>
 
@@ -165,7 +165,7 @@ const MenuDetails = () => {
             <div className="flex gap-4 mt-8">
               <button
                 onClick={() => setShowModal(false)}
-                className="w-1/2 py-3 rounded-xl bg-slate-200 dark:bg-slate-700 font-semibold"
+                className="w-1/2 py-3 rounded-xl bg-slate-200 dark:bg-slate-700 dark:text-white font-semibold"
               >
                 Cancel
               </button>
