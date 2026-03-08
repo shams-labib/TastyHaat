@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react"; // ✅ useEffect যোগ
 import { FaHistory, FaUser, FaUserShield } from "react-icons/fa";
 import Logo from "../../Components/shared/Logo/Logo";
 import {
-  MdFormatListBulleted,
-  MdFormatListBulletedAdd,
-  MdManageAccounts,
-} from "react-icons/md";
-import { IoMdAddCircle } from "react-icons/io";
-import { IoRestaurant } from "react-icons/io5";
-import { TbReorder } from "react-icons/tb";
+  FaFileInvoiceDollar,
+  FaClipboardList,
+  FaUser,
+  FaUserShield,
+  FaUsersCog,
+  FaPlusCircle,
+  FaUtensils,
+  FaShoppingBag,
+} from "react-icons/fa";
+import Logo from "../../Components/shared/Logo/Logo";
 import { NavLink, Outlet } from "react-router";
 import { Home, Menu, X } from "lucide-react";
 import useAxiosSecure from "../../Context/useaxios/useAxiosSecure";
@@ -97,7 +100,7 @@ const DashboardLayout = () => {
           />
           <SidebarItem
             to="/dashboard/payment-history"
-            icon={<FaHistory size={22} />}
+            icon={<FaFileInvoiceDollar size={22} />}
             text="Payment History"
           />
         </div>
@@ -105,7 +108,10 @@ const DashboardLayout = () => {
 
       <div className="flex-1 flex flex-col">
         <div className="lg:hidden flex items-center justify-between p-4 bg-white dark:bg-gray-800 shadow">
-          <button onClick={() => setSidebarOpen(!sidebarOpen)}>
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="text-gray-800 dark:text-white"
+          >
             {sidebarOpen ? <X /> : <Menu />}
           </button>
           <span className="font-semibold text-gray-800 dark:text-gray-100">
